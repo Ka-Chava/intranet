@@ -2,8 +2,38 @@
 
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
 use Livewire\Volt\Volt;
 
+Route::get('/', function() {
+    return Socialite::driver('okta')->redirect();
+});
+Route::get('okta/callback', function() {
+    $oktaUser = Socialite::driver('okta')->user();
+
+    //dd($oktaUser);
+
+    $user = User::updateOrCreate([
+        'okta_id' => $oktaUser->id,
+    ], [
+        'name' => $oktaUser->name,
+        'email' => $oktaUser->email,
+        'okta_token' => $oktaUser->token,
+        'okta_refresh_token' => $oktaUser->refreshToken,
+    ]);
+
+    try {
+        Auth::login($user);
+    }
+    catch (\Throwable $e) {
+        return redirect('/okta');
+    }
+
+    return redirect('/dashboard');
+});
+
+/*
 Route::middleware('guest')->group(function () {
     Volt::route('register', 'pages.auth.register')
         ->name('register');
@@ -29,3 +59,4 @@ Route::middleware('auth')->group(function () {
     Volt::route('confirm-password', 'pages.auth.confirm-password')
         ->name('password.confirm');
 });
+*/
