@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use KCA\Controllers\HelpdeskController;
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

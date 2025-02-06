@@ -3,5 +3,6 @@
 return [
     App\Providers\AppServiceProvider::class,
     App\Providers\VoltServiceProvider::class,
-    \SocialiteProviders\Manager\ServiceProvider::class
+    \SocialiteProviders\Manager\ServiceProvider::class,
+    \App\Providers\ShopifyServiceProvider::class
 ];

@@ -1,19 +1,17 @@
 <?php
 
-namespace KCA\Controllers;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Shopify\Clients\Storefront as ShopifyStorefront;
+use App\Repositories\ShopifyRepository;
 
 class EmployeeStoreController extends Controller
 {
 
-    protected ShopifyStorefront $storefrontClient;
+    protected ShopifyRepository $repository;
 
     public function __construct()
     {
-        $this->storefrontClient = app('shopify.storefront.client');
+        $this->repository = app('shopify.repository');
     }
 
     /**
@@ -21,7 +19,7 @@ class EmployeeStoreController extends Controller
      * @return void
      */
     public function viewStore() {
-        dd(1);
+        dd(json_decode($this->repository->getProducts()->getBody()->getContents(), true));
     }
 
     public function processOrder() {

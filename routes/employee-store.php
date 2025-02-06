@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\EmployeeStoreController;
 use Illuminate\Support\Facades\Route;
-use KCA\Controllers\EmployeeStoreController;
 
 
-
-Route::get('employee/store', [EmployeeStoreController::class, 'viewStore'])
+Route::get('dashboard/store', [EmployeeStoreController::class, 'viewStore'])
     ->middleware(['auth', 'verified'])
-    ->name('employee.store');
+    ->name('dashboard.employee.store');

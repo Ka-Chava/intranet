@@ -1,9 +1,6 @@
 <?php
 
-namespace KCA\Controllers;
-
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
 
 class HelpdeskController extends Controller
 {
