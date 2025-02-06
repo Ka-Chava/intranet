@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'okta_id',
+        'okta_token',
+        'okta_refresh_token'
     ];
 
     /**

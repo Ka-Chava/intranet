@@ -9,14 +9,18 @@ use Livewire\Volt\Volt;
 Route::get('/', function() {
     return Socialite::driver('okta')->redirect();
 });
+
+Route::get('/dump', function() {
+    dd(User::all());
+});
+
 Route::get('okta/callback', function() {
     $oktaUser = Socialite::driver('okta')->user();
-
-    //dd($oktaUser);
 
     $user = User::updateOrCreate([
         'okta_id' => $oktaUser->id,
     ], [
+        'okta_id' => $oktaUser->id,
         'name' => $oktaUser->name,
         'email' => $oktaUser->email,
         'okta_token' => $oktaUser->token,
