@@ -10,9 +10,18 @@ export default {
     ],
 
     theme: {
+        container: {
+            padding: {
+                DEFAULT: '1rem',
+                lg: '2.5rem',
+            },
+        },
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            },
+            colors: {
+                'web-border': '#e5e5e5'
             },
         },
     },

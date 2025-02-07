@@ -14,11 +14,11 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased bg-white w-full">
 
-    <x-header.time></x-header.time>
+    <x-header.top-nav></x-header.top-nav>
 
-    <x-header.user></x-header.user>
+
 
         <div class="min-h-screen bg-gray-100">
             <!-- Page Heading -->

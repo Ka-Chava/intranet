@@ -3,7 +3,7 @@
     $user = Auth::user();
 ?>
 
-<div class="header-pill flex" data-user-id="{{ $user->id }}">
+<div class="header-pill" data-user-id="{{ $user->id }}">
     <figure class="header-pill__avatar">
         <div role="img"></div>
     </figure>
