@@ -13,27 +13,17 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <livewire:styles />
     </head>
     <body class="font-sans antialiased bg-white w-full">
-
-    <x-header.top-nav></x-header.top-nav>
-
-
-
-        <div class="min-h-screen bg-gray-100">
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
+        <x-header.header />
+        <div class="min-h-screen section pt-5" id="WrapperContent">
+            <x-aside.side-nav />
             <!-- Page Content -->
-            <main>
+            <main class="w-full container max-w-full mx-auto" id="MainContent">
                 {{ $slot }}
             </main>
         </div>
+        <livewire:scripts />
     </body>
 </html>

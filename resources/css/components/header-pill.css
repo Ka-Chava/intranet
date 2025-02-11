@@ -1,5 +1,5 @@
 @layer {
     .header-pill {
-        @apply rounded-full bg-web-border inline-flex px-2 py-4;
+        @apply rounded-full bg-web-border inline-flex px-4 py-2 text-xs;
     }
 }

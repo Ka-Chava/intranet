@@ -4,7 +4,7 @@
 
 <div class="header-pill">
     <div class="header-pill__info">
-        <span>Local time</span><span>{{ $now->format('h:i:s A') }}</span>
+       &bull; <span>Local time</span><span>{{ $now->format('h:i:s A') }}</span>
     </div>
 </div>
 

@@ -5,13 +5,13 @@ namespace App\View\Components\Header;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
-class TopNav extends Component
+class Header extends Component
 {
     /**
      * Get the view / contents that represents the component.
      */
     public function render(): View
     {
-        return view('components.header.top-nav');
+        return view('components.header.header');
     }
 }

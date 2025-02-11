@@ -1,6 +1,23 @@
 @import url("tailwindcss/base.css");
 @import url('tailwindcss/components.css');
 @import url('components/header-pill.css');
-@import url('components/top-nav.css');
+@import url('components/user-logged-in.pcss');
+@import url('components/header.css');
 @import url('tailwindcss/utilities.css');
 
+.section {
+    @apply container w-full mx-auto max-w-full;
+}
+
+#WrapperContent {
+    @apply grid grid-cols-3 gap-x-5;
+    grid-template-columns: 330px 1fr 330px;
+}
+
+body.is-collapsed #WrapperContent {
+    grid-template-columns: 50px 1fr 330px;
+}
+
+#MainContent {
+
+}
