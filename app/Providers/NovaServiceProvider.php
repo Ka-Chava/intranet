@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\User;
+use App\Nova\User;
+use App\Nova\Announcement;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Fortify\Features;
 use Laravel\Nova\Nova;
@@ -90,5 +91,15 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         parent::register();
 
         //
+    }
+
+    protected function resources(): void
+    {
+        Nova::resourcesIn(app_path('Nova'));
+
+        Nova::resources([
+            User::class,
+            Announcement::class,
+        ]);
     }
 }
