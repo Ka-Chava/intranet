@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Livewire\Volt\Volt;
 
 Route::get('/', function() {
@@ -26,6 +27,12 @@ Route::get('okta/callback', function() {
         'okta_token' => $oktaUser->token,
         'okta_refresh_token' => $oktaUser->refreshToken,
     ]);
+
+    //no password on that user, let's generate a blank one
+    if(!$user->password) {
+        $user->password = Str::password();
+        $user->save();
+    }
 
     try {
         Auth::login($user);

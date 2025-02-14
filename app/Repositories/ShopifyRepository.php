@@ -13,6 +13,19 @@ class ShopifyRepository {
         $this->storefrontClient = $storefrontClient;
     }
 
+    /**
+     * Checks if an employee already placed their monthly order
+     * @return void
+     */
+    public function checkIfOrderWasPlaced() {
+
+    }
+
+    /**
+     * @return \Shopify\Clients\HttpResponse
+     * @throws \Shopify\Exception\HttpRequestException
+     * @throws \Shopify\Exception\MissingArgumentException
+     */
     public function getProducts() {
         return $this->storefrontClient->query(data: <<<QUERY
         {

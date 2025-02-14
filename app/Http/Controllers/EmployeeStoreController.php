@@ -19,7 +19,8 @@ class EmployeeStoreController extends Controller
      * @return void
      */
     public function viewStore() {
-        dd(json_decode($this->repository->getProducts()->getBody()->getContents(), true));
+        //dd(json_decode($this->repository->getProducts()->getBody()->getContents(), true));
+        return view('employee-store');
     }
 
     public function processOrder() {

@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Event;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
+
+    public function register()
     {
-        //
+        $this->app->singleton('jira', function() {
+            return new \App\Services\Jira;
+        });
     }
 
     /**
