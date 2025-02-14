@@ -14,7 +14,12 @@ class Announcement extends Component
     public function render(): View
     {
         $announcement = AnnouncentModel::latest()->first();
+        $hasAnnouncements = false;
 
-        return view('components.dashboard.announcement', ['announcement' => $announcement]);
+        if($announcement) {
+            $hasAnnouncements = true;
+        }
+
+        return view('components.dashboard.announcement', ['hasAnnouncements' => $hasAnnouncements, 'announcement' => $announcement]);
     }
 }
