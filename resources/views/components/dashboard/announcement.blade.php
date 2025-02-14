@@ -1,4 +1,5 @@
 <div class="dashboard-announcement">
-    test announcement
+    <h2>{{ $announcement->title }}</h2>
+    <p>{{ $announcement->content }}</p>
 </div>
 

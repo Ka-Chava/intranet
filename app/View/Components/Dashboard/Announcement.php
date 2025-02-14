@@ -4,6 +4,7 @@ namespace App\View\Components\Dashboard;
 
 use Illuminate\View\Component;
 use Illuminate\View\View;
+use App\Models\Announcement as AnnouncentModel;
 
 class Announcement extends Component
 {
@@ -12,6 +13,8 @@ class Announcement extends Component
      */
     public function render(): View
     {
-        return view('components.dashboard.announcement', ['hello' => 'world']);
+        $announcement = AnnouncentModel::latest()->first();
+
+        return view('components.dashboard.announcement', ['announcement' => $announcement]);
     }
 }

@@ -3,9 +3,12 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\BelongsTo;
 
 class Announcement extends Resource
 {
@@ -21,7 +24,7 @@ class Announcement extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -42,6 +45,8 @@ class Announcement extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Title', 'title'),
+            Textarea::make('Content', 'content')->alwaysShow(),
+            BelongsTo::make('User')->hideWhenCreating()
         ];
     }
 
