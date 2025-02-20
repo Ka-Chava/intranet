@@ -35,7 +35,7 @@ class StoreController extends BaseController
             return $this->repository->getCustomer();
         });
 
-        return view('employee-store', ['products' => $cached_products, 'customer' => $cached_customer]);
+        return view('store', ['products' => $cached_products, 'customer' => $cached_customer]);
     }
 
     public function processOrder() {
