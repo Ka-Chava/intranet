@@ -20,7 +20,15 @@ class EmployeeStoreController extends Controller
      */
     public function viewStore() {
         //dd(json_decode($this->repository->getProducts()->getBody()->getContents(), true));
-        return view('employee-store');
+
+        cache()->flush();
+
+        $seconds = now()->addHours(24);
+        $cached_products = cache()->remember('users', $seconds, function () {
+            return $this->repository->getProducts();
+        });
+
+        return view('employee-store', ['products' => $cached_products]);
     }
 
     public function processOrder() {

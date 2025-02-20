@@ -3,6 +3,9 @@
 namespace App\Repositories;
 
 
+use App\Models\Product;
+use Illuminate\Support\Collection;
+
 class ShopifyRepository {
 
     private \Shopify\Clients\Graphql $adminClient;
@@ -27,17 +30,34 @@ class ShopifyRepository {
      * @throws \Shopify\Exception\MissingArgumentException
      */
     public function getProducts() {
-        return $this->storefrontClient->query(data: <<<QUERY
+        $output = $this->storefrontClient->query(data: <<<QUERY
         {
-            products (first: 50) {
+            products (first: 50, query: "product_type:Shakes AND tag:for_intranet") {
                 edges {
                     node {
                         id
                         title
+                        totalInventory
+                        featuredImage {
+                            altText
+                            url
+                        }
                     }
                 }
             }
         }
     QUERY);
+        $response = $output->getBody()->getContents();
+        $decoded = json_decode($response, true);
+
+        $c = new Collection;
+        foreach ($decoded['data']['products']['edges'] as $node) {
+            $p = $node['node'];
+            $m = new Product($p);
+            $c->add($m);
+        }
+
+        return $c;
+
     }
 }
