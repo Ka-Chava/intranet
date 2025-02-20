@@ -3,25 +3,50 @@
 namespace App\Repositories;
 
 
+use App\Models\Employee;
 use App\Models\Product;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class ShopifyRepository {
 
-    private \Shopify\Clients\Graphql $adminClient;
-    private \Shopify\Clients\Storefront $storefrontClient;
+    protected \Shopify\Clients\Graphql $adminClient;
+    protected \Shopify\Clients\Storefront $storefrontClient;
 
     public function __construct(\Shopify\Clients\Graphql $adminClient, \Shopify\Clients\Storefront $storefrontClient) {
         $this->adminClient = $adminClient;
         $this->storefrontClient = $storefrontClient;
     }
 
-    /**
-     * Checks if an employee already placed their monthly order
-     * @return void
-     */
-    public function checkIfOrderWasPlaced() {
 
+    public function getCustomer() {
+        $user = Auth::user();
+        $query = <<<QUERY
+          query {
+            customers(first: 20, query: "email:$user->email") {
+              edges {
+                customer: node {
+                  id
+                  email
+                  firstName
+                  lastName
+                  tags
+                }
+              }
+            }
+          }
+        QUERY;
+
+        $output = $this->adminClient->query(['query' => $query], [], ['X-Shopify-Access-Token', env('SHOPIFY_ADMIN_ACCESS_TOKEN')]);
+
+        $response = $output->getBody()->getContents();
+        $decoded = json_decode($response, true);
+        if($decoded['data']['customers']) {
+            return new Employee($decoded['data']['customers']['edges'][0]['customer']);
+        }
+        else {
+            return null;
+        }
     }
 
     /**

@@ -2,15 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('dashboard', 'dashboard')
+Route::view('my', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::view('profile', 'profile')
+Route::view('my/profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-Route::view('helpdesk/ticket', 'helpdesk/ticket')->middleware(['auth', 'verified'])->name('helpdesk.ticket');
+Route::view('my/helpdesk/ticket', 'helpdesk/ticket')->middleware(['auth', 'verified'])->name('helpdesk.ticket');
 
 
 require __DIR__.'/employee-store.php';

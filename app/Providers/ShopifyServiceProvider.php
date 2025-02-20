@@ -24,7 +24,7 @@ class ShopifyServiceProvider extends ServiceProvider
             sessionStorage: new \Shopify\Auth\FileSessionStorage('/tmp/php_sessions'),
             apiVersion: '2025-01',
             isEmbeddedApp: false,
-            isPrivateApp: true,
+            isPrivateApp: false,
         );
 
         $app =& $this->app;

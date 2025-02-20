@@ -10,6 +10,10 @@ abstract class GraphqlModel
         $this->raw = $params;
     }
 
+    public function getId() {
+        return $this->raw['id'];
+    }
+
     public function __set( $name , $value ) {
 
         $name = explode('_', $name);

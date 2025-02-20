@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\ShopifyRepository;
+use Illuminate\Support\Facades\Auth;
 
-class EmployeeStoreController extends Controller
+class EmployeeStoreController extends BaseController
 {
 
     protected ShopifyRepository $repository;
 
     public function __construct()
     {
+        parent::__construct();
         $this->repository = app('shopify.repository');
     }
 
@@ -28,7 +30,12 @@ class EmployeeStoreController extends Controller
             return $this->repository->getProducts();
         });
 
-        return view('employee-store', ['products' => $cached_products]);
+        $key = 'customers_' . Auth::user()->id;
+        $cached_customer = cache()->remember($key, $seconds, function() {
+            return $this->repository->getCustomer();
+        });
+
+        return view('employee-store', ['products' => $cached_products, 'customer' => $cached_customer]);
     }
 
     public function processOrder() {

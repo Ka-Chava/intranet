@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('okta_id', 30)->unique()->index()->nullable();
-            $table->text('okta_token')->unique()->nullable();
+            $table->text('okta_token')->nullable();
             $table->text('okta_refresh_token')->nullable();
             $table->string('name');
             $table->string('email')->unique();

@@ -17,6 +17,9 @@ export default {
             },
         },
         extend: {
+            fontSize: {
+                'page-header': ['24px', '32px']
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },

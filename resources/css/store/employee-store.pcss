@@ -1,12 +1,17 @@
 #EmployeeStore {
     @apply w-full;
-    @apply  grid grid-cols-2;
-    .employee-store__products-list {
-        @apply grid gap-2 grid-cols-2;
-    }
+    @apply grid grid-cols-2 gap-x-6 gap-y-10;
     .employee-store__products {
+        @apply w-full relative;
+        .employee-store__products-list {
+            @apply flex flex-wrap gap-y-4;
+            > li {
+                @apply w-full relative;
+                flex: 0 0 auto;
+            }
+        }
     }
     .employee-store__info {
-
+        @apply w-full relative;
     }
 }

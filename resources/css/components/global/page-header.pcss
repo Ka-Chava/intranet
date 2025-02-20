@@ -1,0 +1,15 @@
+.page-header {
+    @apply w-full;
+    h1 {
+        @apply text-black text-page-header font-bold m-0;
+    }
+    .page-header__caption {
+        @apply text-base leading-normal text-black;
+    }
+    h1 + .page-header__caption {
+        @apply mt-3;
+    }
+}
+.page-header + * {
+    @apply mt-6;
+}
