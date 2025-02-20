@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\ShopifyRepository;
 use Illuminate\Support\Facades\Auth;
 
-class EmployeeStoreController extends BaseController
+class StoreController extends BaseController
 {
 
     protected ShopifyRepository $repository;

@@ -8,7 +8,7 @@
         ['url' =>'https://www.adp.com', 'title' => 'ADP'],
         ['url' =>'dashboard', 'title' => '401k'],
         ['url' =>'http://kachava.dash.app', 'title' => 'Dash'],
-        ['url' =>'employee.store', 'title' => 'Employee Store'],
+        ['url' =>'store', 'title' => 'Employee Store'],
     ]
 @endphp
 <aside class="side-nav">

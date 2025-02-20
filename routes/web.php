@@ -13,6 +13,6 @@ Route::view('my/profile', 'profile')
 Route::view('my/helpdesk/ticket', 'helpdesk/ticket')->middleware(['auth', 'verified'])->name('helpdesk.ticket');
 
 
-require __DIR__.'/employee-store.php';
+require __DIR__.'/store.php';
 
 require __DIR__.'/auth.php';

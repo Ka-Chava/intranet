@@ -41,7 +41,7 @@ Route::get('okta/callback', function() {
         return redirect('/okta');
     }
 
-    return redirect('/my');
+    return redirect()->route('dashboard');
 });
 
 /*
