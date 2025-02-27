@@ -18,8 +18,51 @@ class ShopifyRepository {
         $this->storefrontClient = $storefrontClient;
     }
 
+    /**
+     * @return void
+     */
+    public function getLasOrders(Employee $customer) {
+        $query = <<<QUERY
+          query {
+            orders(first: 10, sortKey: CREATED_AT, reverse: true, query: "customer_id:$customer->only_id AND tag:employee") {
+              edges {
+                order: node {
+                  id
+                  createdAt
+                  closed
+                  closedAt
+                }
+              }
+            }
+          }
+        QUERY;
 
-    public function getCustomer() {
+
+        $output = $this->adminClient->query(['query' => $query], [],
+            ['X-Shopify-Access-Token', env('SHOPIFY_ADMIN_ACCESS_TOKEN')]);
+
+        $response = $output->getBody()->getContents();
+        $decoded = json_decode($response, true);
+        $c = new Collection;
+        if($decoded['data']['orders']) {
+            foreach ($decoded['data']['orders']['edges'] as $order) {
+                $order = new \App\Models\Order($order['order']);
+                $c->add($order);
+            }
+        }
+        return $c;
+    }
+
+    /**
+     * @return void
+     */
+    public function getNextOrderDate() {
+
+    }
+
+
+    public function getCustomer(): ?Employee
+    {
         $user = Auth::user();
         $query = <<<QUERY
           query {

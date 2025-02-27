@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-global.page-header>
         <x-slot:title>
-            Employee Store
+            {{ $policy->title }}
         </x-slot:title>
         <x-slot:caption>
             <p>Welcome back</p>

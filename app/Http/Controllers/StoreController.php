@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\ShopifyRepository;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class StoreController extends BaseController
 {
@@ -14,6 +15,18 @@ class StoreController extends BaseController
     {
         parent::__construct();
         $this->repository = app('shopify.repository');
+        $seconds = now()->addHours(24);
+
+        $key = 'customers_' . Auth::user()->id;
+        $cached_customer = cache()->remember($key, $seconds, function() {
+            return $this->repository->getCustomer();
+        });
+
+        $recent_orders = $this->repository->getLasOrders($cached_customer);
+
+        //globally shared for all components
+        View::share('customer', $cached_customer);
+        View::share('recent_order', $recent_orders->first());
     }
 
     /**
@@ -21,7 +34,6 @@ class StoreController extends BaseController
      * @return void
      */
     public function viewStore() {
-        //dd(json_decode($this->repository->getProducts()->getBody()->getContents(), true));
 
         cache()->flush();
 
@@ -30,12 +42,13 @@ class StoreController extends BaseController
             return $this->repository->getProducts();
         });
 
-        $key = 'customers_' . Auth::user()->id;
-        $cached_customer = cache()->remember($key, $seconds, function() {
-            return $this->repository->getCustomer();
-        });
+        $product_limit = 2;
 
-        return view('store', ['products' => $cached_products, 'customer' => $cached_customer]);
+        return view('store', [
+            'products' => $cached_products,
+            'product_limit' => $product_limit
+            ]
+        );
     }
 
     public function processOrder() {

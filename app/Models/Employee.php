@@ -12,6 +12,10 @@ class Employee extends GraphqlModel
         return in_array($value, $this->tags);
     }
 
+    public function getOnlyId() {
+        return str_replace('gid://shopify/Customer/', '', $this->id);
+    }
+
     /**
      * Checks if the customer can order this month
      * @return bool

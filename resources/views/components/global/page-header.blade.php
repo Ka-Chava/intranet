@@ -1,6 +1,9 @@
 <div class="page-header">
-    <h1>{{ $title }}</h1>
+    @isset($title)
+    <h1>{{$title}}</h1>
     <div class="page-header__caption">
         {{ $caption }}
     </div>
+    @endisset
+    {{ $html }}
 </div>

@@ -1,17 +1,21 @@
+@import "../components/store/product-card.pcss";
+@import "../components/store/store-header.pcss";
+
 #EmployeeStore {
     @apply w-full;
-    @apply grid grid-cols-2 gap-x-6 gap-y-10;
     .employee-store__products {
         @apply w-full relative;
         .employee-store__products-list {
             @apply flex flex-wrap gap-y-4;
             > li {
-                @apply w-full relative;
+                @apply  w-1/4;
                 flex: 0 0 auto;
             }
         }
     }
-    .employee-store__info {
-        @apply w-full relative;
+
+    #AddToCart {
+        @apply h-[44px];
+        @apply w-full relative bg-black text-white rounded text-base leading-[24px];
     }
 }

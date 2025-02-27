@@ -6,8 +6,17 @@ abstract class GraphqlModel
 {
     protected array $raw = [];
 
+
     public function __construct($params = []) {
         $this->raw = $params;
+    }
+
+    /**
+     * Gets the raw data
+     * @return array|mixed
+     */
+    public function getObject() {
+        return $this->raw;
     }
 
     public function getId() {
