@@ -29,5 +29,13 @@
             </ul>
             <button id="AddToCart" class="w-full">Add to cart</button>
         </form>
+        <div class="employee-store__shipping">
+            <h2>Shipping</h2>
+            <p>Select or create a shipping address.</p>
+        </div>
+        <div class="employee-store__confirm">
+            <h2>Confirm and Submit</h2>
+            <p>Is your order and information correct?</p>
+        </div>
     </div>
 </x-app-layout>
