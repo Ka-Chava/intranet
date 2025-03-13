@@ -88,8 +88,10 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <livewire:styles />
     </head>
-    <body class="font-sans antialiased bg-white w-full">
+    <body class="font-sans antialiased w-full">
         <main class="w-full container max-w-full mx-auto" id="Styleguide">
+            <x-theme.theme-switcher />
+
             <h1 class="text-display-lg mb-10">
                 Styleguide
             </h1>
@@ -157,6 +159,7 @@
                 @endforeach
             </div>
         </main>
+
         <livewire:scripts />
     </body>
 </html>
