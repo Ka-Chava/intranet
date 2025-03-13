@@ -1,4 +1,10 @@
 @import url("tailwindcss/base.css");
+
+@import url('theme/theme.pcss');
+
+@import url('ui/button.pcss');
+@import url('ui/typography.pcss');
+
 @import url('tailwindcss/components.css');
 @import url('components/header-pill.css');
 @import url('components/user-info.pcss');
@@ -11,6 +17,7 @@
 
 html, body {
     font-family: Figtree, ui-sans-serif, system-ui, sans-serif;
+    @apply text-on-surface-emphasis bg-canvas;
 }
 
 .section {
