@@ -15,7 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <livewire:styles />
     </head>
-    <body class="font-sans antialiased bg-white w-full">
+    <body class="font-sans antialiased w-full">
         <x-header.header />
         <div class="min-h-screen section pt-5" id="WrapperContent">
             <x-aside.side-nav />
