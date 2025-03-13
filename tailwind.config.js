@@ -46,7 +46,7 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                'web-border': '#e5e5e5',
+                'web-border': '#262626',
                 constant: '#3C3C3C',
 
                 /* Surface colors */
@@ -95,6 +95,8 @@ export default {
 
                 'btn-special-active': 'var(--ui-button-special-active)',
                 'btn-special-text': 'var(--ui-button-special-text-color)',
+
+                'header-pill-outline': 'var(--ui-header-pill-outline)',
             },
             backgroundImage: {
               before: 'linear-gradient(96deg, #FBD7FF 0%, #FFDEC1 100%)',
