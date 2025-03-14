@@ -47,6 +47,7 @@ export default {
             },
             colors: {
                 'web-border': '#262626',
+                'web-border-light': '#E5E5E5',
                 constant: '#3C3C3C',
 
                 /* Surface colors */
@@ -70,6 +71,7 @@ export default {
                 /* Borders colors */
                 outline: 'var(--ui-color-outline-default)',
                 'outline-selected': 'var(--ui-color-outline-selected)',
+                'outline-alternative': 'var(--ui-color-outline-alternative)',
 
                 /* Additional colors */
                 divider: 'var(--ui-color-divider)',
@@ -96,7 +98,9 @@ export default {
                 'btn-special-active': 'var(--ui-button-special-active)',
                 'btn-special-text': 'var(--ui-button-special-text-color)',
 
-                'header-pill-outline': 'var(--ui-header-pill-outline)',
+                'link-hover': 'var(--ui-link-hover-color)',
+                'link-active': 'var(--ui-link-active-color)',
+                'link-active-text': 'var(--ui-link-active-text-color)',
             },
             backgroundImage: {
               before: 'linear-gradient(96deg, #FBD7FF 0%, #FFDEC1 100%)',
