@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "126020b97041b9d4172d13d591352704",
+    "content-hash": "967d2e8d77725e1525c12fb4225a293f",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3958,6 +3958,63 @@
                 }
             ],
             "time": "2024-12-14T21:12:59+00:00"
+        },
+        {
+            "name": "poldixd/laravel-feather",
+            "version": "12.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/poldixd/laravel-feather.git",
+                "reference": "1d9c39e6728900f9557dd9a7f0f9fe12ebd1e38c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/poldixd/laravel-feather/zipball/1d9c39e6728900f9557dd9a7f0f9fe12ebd1e38c",
+                "reference": "1d9c39e6728900f9557dd9a7f0f9fe12ebd1e38c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^10.0|^11.0|^12.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.0|^9.0|^10.0",
+                "phpunit/phpunit": "^9.5|^10.0|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "poldixd\\LaravelFeather\\Providers\\LaravelFeatherServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "poldixd\\LaravelFeather\\": "src/LaravelFeather/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nils Poltmann",
+                    "email": "dev@nils.li"
+                }
+            ],
+            "keywords": [
+                "blade",
+                "feather",
+                "feather-icons",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/poldixd/laravel-feather/issues",
+                "source": "https://github.com/poldixd/laravel-feather"
+            },
+            "time": "2025-02-04T09:46:51+00:00"
         },
         {
             "name": "pragmarx/google2fa",
