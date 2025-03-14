@@ -3,9 +3,12 @@
 ?>
 
 <div class="header-pill">
-    <div class="header-pill__info">
-       &bull; <span>Local time</span><span>{{ $now->format('h:i:s A') }}</span>
-    </div>
+    <span class="header-pill__desktop">
+        <span class="header-pill__dot">&bull;</span>
+        <span>Local time:</span>
+    </span>
+
+    <span>{{ $now->format('h:i A') }}</span>
 </div>
 
 
