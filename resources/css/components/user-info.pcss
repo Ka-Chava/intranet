@@ -1,11 +1,19 @@
 .user-info {
-    .user-info__avatar {
-        @apply  rounded-full border border-black w-12 h-12;
-    }
+    @apply flex items-center justify-between pl-6;
+
     .user-info__wrapper {
-        @apply flex gap-x-3;
+        @apply flex items-center gap-x-3;
     }
-    button {
-        @apply w-11 h-11 rounded bg-gray-100;
+
+    .user-info__avatar {
+        @apply flex items-center justify-center relative rounded-full border border-web-border-light w-10 h-10;
+    }
+
+    .user-info__avatar-image {
+        @apply absolute inset-0 w-full h-full rounded-full object-cover;
+    }
+
+    .user-info__details {
+        @apply font-bold whitespace-nowrap;
     }
 }
