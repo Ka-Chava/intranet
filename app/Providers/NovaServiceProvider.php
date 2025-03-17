@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Nova\Holiday;
 use App\Nova\User;
 use App\Nova\Announcement;
 use Illuminate\Support\Facades\Gate;
@@ -100,6 +101,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         Nova::resources([
             User::class,
             Announcement::class,
+            Holiday::class
         ]);
     }
 }
