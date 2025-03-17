@@ -8,7 +8,7 @@
             @if($user->avatar)
                 <img src="{{ $user->avatar }}" alt="" class="user-info__avatar-image" />
             @else
-                <x:feather-user />
+                {{ svg('heroicon-o-user') }}
             @endif
         </div>
 

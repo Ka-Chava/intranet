@@ -2,13 +2,13 @@
     $links = [
         ['url' =>'dashboard', 'title' => 'Dashboard', 'icon' => 'grid'],
         ['url' =>'dashboard', 'title' => 'Handbook', 'icon' => 'file'],
-        ['url' =>'dashboard', 'title' => 'Company News', 'icon' => 'globe'],
-        ['url' =>'dashboard', 'title' => 'Help Desk', 'icon' => 'monitor'],
+        ['url' =>'dashboard', 'title' => 'Company News', 'icon' => 'apartment'],
+        ['url' =>'dashboard', 'title' => 'Help Desk', 'icon' => 'laptop'],
         ['url' =>'dashboard', 'title' => 'I.T. News', 'icon' => 'database'],
-        ['url' =>'https://www.adp.com', 'title' => 'ADP', 'icon' => 'database'],
-        ['url' =>'http://kachava.dash.app', 'title' => '401k', 'icon' => 'database'],
-        ['url' =>'http://kachava.dash.app', 'title' => 'Dash', 'icon' => 'database'],
-        ['url' =>'store', 'title' => 'Employee Store', 'icon' => 'shopping-cart'],
+        ['url' =>'https://www.adp.com', 'title' => 'ADP', 'icon' => 'adp'],
+        ['url' =>'http://kachava.dash.app', 'title' => '401k', 'icon' => 'wallet'],
+        ['url' =>'http://kachava.dash.app', 'title' => 'Dash', 'icon' => 'dash'],
+        ['url' =>'store', 'title' => 'Employee Store', 'icon' => 'cart'],
     ]
 @endphp
 <aside class="side-nav" x-data="{ collapsed: false }" :class="collapsed && 'collapsed'">
@@ -24,11 +24,11 @@
             @click="collapsed = !collapsed; $dispatch('user-info-collapse-navigation', {collapsed: collapsed})"
         >
             <span x-show="collapsed">
-                <x:feather-chevron-right />
+                {{ svg('heroicon-o-chevron-right') }}
             </span>
 
             <span x-show="!collapsed">
-                <x:feather-chevron-left />
+                {{ svg('heroicon-o-chevron-left') }}
             </span>
         </button>
     </div>
@@ -36,7 +36,7 @@
     <div class="side-nav__nav">
         <h2 class="side-nav__heading">
             <span class="flex justify-center" x-show="collapsed">
-                <x:feather-home />
+                {{ svg('heroicon-o-home') }}
             </span>
 
             <span x-show="!collapsed">Organization</span>
@@ -63,13 +63,13 @@
                         {{ $is_active ? "aria-current=page" : null }}
                     >
                         @if($link['icon'])
-                            @include("feather::{$link['icon']}")
+                            {{ svg($link['icon']) }}
                         @endif
 
                         {{ $link['title'] }}
 
                         @if($is_external)
-                            <x:feather-chevron-right class="ml-auto" />
+                            <x-heroicon-o-chevron-right class="ml-auto" />
                         @endif
                     </a>
                 </li>
