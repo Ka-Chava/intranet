@@ -116,13 +116,13 @@
 
                                 <div class="flex gap-x-10">
                                     <button class="{{ $item['value'] }}">
-                                        <x:feather-figma class="{{str_contains($item['value'], 'button--small') ? 'w-5 h-5' : 'w-6 h-6'}}" />
+                                        <x-icon-figma class="{{str_contains($item['value'], 'button--small') ? 'w-5 h-5' : 'w-6 h-6'}}" />
                                         {{ $button['title'] }}
                                     </button>
 
                                     <button class="{{ $item['value'] }}">
                                         {{ $button['title'] }}
-                                        <x:feather-figma class="{{str_contains($item['value'], 'button--small') ? 'w-5 h-5' : 'w-6 h-6'}}" />
+                                        <x-icon-figma class="{{str_contains($item['value'], 'button--small') ? 'w-5 h-5' : 'w-6 h-6'}}" />
                                     </button>
 
                                     <button class="{{ $item['value'] }}">
@@ -130,19 +130,19 @@
                                     </button>
 
                                     <button class="{{ $item['value'] }}">
-                                        <x:feather-figma class="{{str_contains($item['value'], 'button--small') ? 'w-5 h-5' : 'w-6 h-6'}}" />
+                                        <x-icon-figma class="{{str_contains($item['value'], 'button--small') ? 'w-5 h-5' : 'w-6 h-6'}}" />
                                     </button>
                                 </div>
 
                                 <div class="flex gap-x-10">
                                     <button class="{{ $item['value'] }}" disabled>
-                                        <x:feather-figma class="{{str_contains($item['value'], 'button--small') ? 'w-5 h-5' : 'w-6 h-6'}}" />
+                                        <x-icon-figma class="{{str_contains($item['value'], 'button--small') ? 'w-5 h-5' : 'w-6 h-6'}}" />
                                         {{ $button['title'] }}
                                     </button>
 
                                     <button class="{{ $item['value'] }}" disabled>
                                         {{ $button['title'] }}
-                                        <x:feather-figma class="{{str_contains($item['value'], 'button--small') ? 'w-5 h-5' : 'w-6 h-6'}}" />
+                                        <x-icon-figma class="{{str_contains($item['value'], 'button--small') ? 'w-5 h-5' : 'w-6 h-6'}}" />
                                     </button>
 
                                     <button class="{{ $item['value'] }}" disabled>
@@ -150,7 +150,7 @@
                                     </button>
 
                                     <button class="{{ $item['value'] }}" disabled>
-                                        <x:feather-figma class="{{str_contains($item['value'], 'button--small') ? 'w-5 h-5' : 'w-6 h-6'}}" />
+                                        <x-icon-figma class="{{str_contains($item['value'], 'button--small') ? 'w-5 h-5' : 'w-6 h-6'}}" />
                                     </button>
                                 </div>
                             </div>

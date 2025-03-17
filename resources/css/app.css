@@ -25,12 +25,12 @@ html, body {
 }
 
 #WrapperContent {
-    @apply grid grid-cols-3 gap-x-5;
-    grid-template-columns: 330px 1fr 330px;
+    @apply grid grid-cols-3 gap-x-5 transition-all duration-200;
+    grid-template-columns: 320px 1fr 330px;
 }
 
 body.is-collapsed #WrapperContent {
-    grid-template-columns: 50px 1fr 330px;
+    grid-template-columns: 54px 1fr 330px;
 }
 
 #MainContent {

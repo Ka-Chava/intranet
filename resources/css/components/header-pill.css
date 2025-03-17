@@ -1,5 +1,5 @@
 .header-pill {
-    @apply rounded-full inline-flex items-center gap-2 min-h-9 px-4 py-2 text-xs bg-surface text-on-surface-emphasis border border-header-pill-outline duration-0;
+    @apply rounded-full inline-flex items-center gap-2 min-h-9 px-4 py-2 text-xs bg-surface text-on-surface-emphasis border border-outline-alternative duration-0;
 
     .header-pill__dot {
         @apply text-xl leading-none -mt-0.5;

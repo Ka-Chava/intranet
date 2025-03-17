@@ -9,6 +9,6 @@
         <span>Theme:</span>
         <span x-text="theme === 'dark' ? 'Dark' : 'Light'"></span>
     </span>
-    <x:feather-moon class="w-5 h-5" x-show="theme === 'dark'" />
-    <x:feather-sun class="w-5 h-5" x-show="theme !== 'dark'" />
+    <x-heroicon-o-moon x-show="theme === 'dark'" />
+    <x-heroicon-o-sun x-show="theme !== 'dark'" />
 </button>
