@@ -1,0 +1,72 @@
+.calendar {
+    @apply rounded-lg bg-surface text-on-surface-emphasis border border-outline-alternative;
+
+    .calendar__header {
+        @apply flex justify-between items-center px-4 py-2.5;
+    }
+
+    .calendar__title {
+        @apply flex gap-2 text-headline-sm;
+    }
+
+    .calendar__buttons {
+        @apply flex gap-1;
+
+        svg {
+            @apply min-w-4 min-h-4 w-4 h-4;
+        }
+    }
+
+    .calendar__button {
+        @apply w-6 h-6 rounded-full text-on-surface-emphasis p-0 hover:bg-link-hover hover:text-link-active-text;
+    }
+
+    .calendar__body {
+        @apply flex flex-col gap-3 p-4;
+    }
+
+    .calendar__grid {
+        @apply grid grid-cols-7 gap-y-1 text-center;
+    }
+
+    .calendar__cell {
+        @apply flex items-center justify-center w-9 h-9 text-sm font-semibold p-1.5 rounded-full;
+
+        &.calendar__cell--heading {
+            @apply p-0.5;
+        }
+
+        &.calendar__cell--body {
+            @apply text-on-surface-default cursor-pointer hover:bg-link-hover hover:text-link-active-text;
+        }
+
+        &.calendar__cell--muted {
+            @apply text-on-surface-de-emphasis opacity-40;
+        }
+
+        &:not(.active) {
+            @apply transition-colors duration-200;
+        }
+
+        &.active {
+            @apply bg-link text-white pointer-events-none;
+        }
+    }
+
+    .calendar__preview {
+        @apply hidden;
+    }
+}
+
+.collapsed {
+    .calendar {
+        .calendar__header,
+        .calendar__body {
+            @apply hidden;
+        }
+
+        .calendar__preview {
+            @apply flex flex-col items-center justify-center p-2 gap-6;
+        }
+    }
+}
