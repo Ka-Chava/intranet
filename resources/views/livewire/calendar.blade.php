@@ -1,5 +1,9 @@
-<div x-data="calendar()" x-init="[initDate(), updateDates()]" class="calendar {{ $class }}" aria-label="Choose date">
-    <input type="hidden" :value="datepickerValue" wire:model="selectedDate" />
+<div
+    x-data="createCalendar()"
+    class="calendar {{ $class }}"
+    aria-label="Choose date"
+>
+    <input type="hidden" x-model="datepickerValue" wire:model="selectedDate" />
 
     <div class="calendar__preview">
         <x-heroicon-o-calendar class="!w-6 !h-6 text-on-surface-de-emphasis" />
@@ -47,7 +51,7 @@
                 />
             </template>
 
-            <template x-for="date in noOfDays" :key="'current-' + date">
+            <template x-for="date in noOfDays" :key="'current-' + month + date">
                 <div
                     tabindex="0"
                     role="option"
@@ -55,8 +59,13 @@
                     :class="{'active': isSelectedDate(date)}"
                     :aria-selected="isSelectedDate(date)"
                     @click="updateDateValue(date)"
-                    x-text="String(date).padStart(2, '0')"
-                />
+                >
+                    <span x-text="String(date).padStart(2, '0')"></span>
+
+                    <template x-if="isHoliday(date, {{ $holidays }}) && !isSelectedDate(date)">
+                        <span class="calendar__holiday"></span>
+                    </template>
+                </div>
             </template>
 
             <template x-for="day in nextMonthDays" :key="'next-' + day">
@@ -74,7 +83,7 @@
     const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
-    function calendar() {
+    function createCalendar() {
         return {
             datepickerValue: '',
             selectedDate: '{{ now()->format('Y-m-d') }}',
@@ -84,12 +93,13 @@
             blankdays: [],
             prevMonthDays: [],
             nextMonthDays: [],
-            initDate() {
+            init() {
                 const today = new Date();
                 this.month = today.getMonth();
                 this.year = today.getFullYear();
-
                 this.datepickerValue = today.toISOString().split('T')[0];
+
+                this.updateDates();
             },
             updateDates() {
                 const daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
@@ -108,15 +118,10 @@
                 this.nextMonthDays = Array.from({ length: nextMonthDaysCount }, (_, i) => i + 1);
             },
             updateDateValue(date) {
-                const selected = new Date(this.year, this.month, date);
-                const yyyy = selected.getFullYear();
-                const mm = String(selected.getMonth() + 1).padStart(2, '0');
-                const dd = String(selected.getDate()).padStart(2, '0');
-
-                this.selectedDate = `${yyyy}-${mm}-${dd}`;
+                this.selectedDate = this.dayToDate(date);
                 this.datepickerValue = this.selectedDate;
 
-                @this.set('selectedDate', this.selectedDate);
+                @this.call('updateSelectedDate', this.selectedDate);
             },
             prevMonth() {
                 this.month--;
@@ -146,6 +151,14 @@
                 this.nextMonth();
                 this.updateDateValue(day);
             },
+            dayToDate(date) {
+                const selected = new Date(this.year, this.month, date);
+                const yyyy = selected.getFullYear();
+                const mm = String(selected.getMonth() + 1).padStart(2, '0');
+                const dd = String(selected.getDate()).padStart(2, '0');
+
+                return `${yyyy}-${mm}-${dd}`;
+            },
             isSelectedDate(date) {
                 const selected = new Date(this.selectedDate);
                 selected.setHours(0, 0, 0, 0);
@@ -155,6 +168,9 @@
 
                 return current.getTime() === selected.getTime();
             },
+            isHoliday(date, holidays = []) {
+                return holidays.some(holiday => new Date(holiday.date).toISOString().split('T')[0] === this.dayToDate(date));
+            }
         };
     }
 </script>

@@ -30,7 +30,7 @@
     }
 
     .calendar__cell {
-        @apply flex items-center justify-center w-9 h-9 text-sm font-semibold p-1.5 rounded-full;
+        @apply relative flex items-center justify-center w-9 h-9 text-sm font-semibold p-1.5 rounded-full;
 
         &.calendar__cell--heading {
             @apply p-0.5;
@@ -55,6 +55,10 @@
 
     .calendar__preview {
         @apply hidden;
+    }
+
+    .calendar__holiday {
+        @apply absolute flex top-0 right-0 w-2 h-2 bg-link rounded-full;
     }
 }
 

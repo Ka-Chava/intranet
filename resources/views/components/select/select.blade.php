@@ -1,4 +1,7 @@
-<div x-data="select()" {{ $attributes->only('class')->merge(['class' => 'select']) }} {{$attributes}}>
+<div
+    x-data="createSelect({{ json_encode($options) }}, '{{ $selected }}')"
+    {{ $attributes->only('class')->merge(['class' => 'select']) }} {{$attributes}}
+>
     <select
         id="{{ $id }}"
         name="{{ $name }}"
@@ -44,7 +47,6 @@
         x-cloak
         x-ref="selectMenu"
         x-show="open"
-        x-trap="open"
         x-transition:enter="transition ease-out duration-100"
         x-transition:enter-start="opacity-0 -translate-y-3"
         x-transition:enter-end="opacity-100 translate-y-0"
@@ -78,14 +80,15 @@
 </div>
 
 <script>
-    function select() {
+    function createSelect(options = [], selected = null) {
         return {
             open: false,
             options: [],
-            selected: '{{ $selected }}',
+            selected: null,
             selectedOption: null,
             init() {
-                this.options = @json($options);
+                this.selected = selected;
+                this.options = options;
                 this.selectedOption = this.options.find(option => String(option.value) === String(this.selected));
             },
             openMenu() { this.open = true; },

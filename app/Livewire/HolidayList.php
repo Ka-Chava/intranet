@@ -65,7 +65,6 @@ class HolidayList extends Component
         $this->loadHolidays();
     }
 
-    #[On('holidays-range-changed')]
     public function changeRange($value)
     {
         $this->holidaysRange = $value;

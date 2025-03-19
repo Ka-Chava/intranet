@@ -9,7 +9,7 @@
     @endphp
     <x-select
         :options="$options"
-        :selected="$holidaysRange"
+        selected="30"
         id="holidays-range"
         name="range"
         class="holiday-list__select"
@@ -70,7 +70,6 @@
                 <button
                     type="button"
                     class="button button--primary holiday-card__button"
-                    @click="dismissed = true"
                     @click="dismissed = true; $wire.dismiss({{ $holiday->id }})"
                 >
                     Dismiss

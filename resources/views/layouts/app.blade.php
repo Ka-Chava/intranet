@@ -33,6 +33,18 @@
             </main>
 
             <x-aside.side-nav position="right">
+                <x-slot:header>
+                    @php
+                        $options = [['label' => 'All', 'value' => 'all']];
+                    @endphp
+                    <x-select
+                        :options="$options"
+                        selected="all"
+                        id="calendar-select"
+                        name="calendar"
+                    />
+                </x-slot:header>
+
                 <livewire:calendar class="mt-1" />
                 <livewire:holiday-list class="mt-10" />
             </x-aside.side-nav>
