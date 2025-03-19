@@ -17,13 +17,39 @@
     </head>
     <body class="font-sans antialiased w-full">
         <x-header.header />
+
         <div class="min-h-screen section pt-5" id="WrapperContent">
-            <x-aside.side-nav />
+            <x-aside.side-nav>
+                <x-slot:header>
+                    <x-aside.user-info />
+                </x-slot:header>
+
+                <x-aside.navigation class="mt-6" />
+            </x-aside.side-nav>
+
             <!-- Page Content -->
             <main class="w-full container max-w-full mx-auto" id="MainContent">
                 {{ $slot }}
             </main>
+
+            <x-aside.side-nav position="right">
+                <x-slot:header>
+                    @php
+                        $options = [['label' => 'All', 'value' => 'all']];
+                    @endphp
+                    <x-select
+                        :options="$options"
+                        selected="all"
+                        id="calendar-select"
+                        name="calendar"
+                    />
+                </x-slot:header>
+
+                <livewire:calendar class="mt-1" />
+                <livewire:holiday-list class="mt-10" />
+            </x-aside.side-nav>
         </div>
+
         <livewire:scripts />
     </body>
 </html>

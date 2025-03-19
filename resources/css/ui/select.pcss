@@ -1,0 +1,27 @@
+.select {
+    @apply relative w-full;
+
+    .select__control {
+        @apply pointer-events-none absolute start-0 top-0 appearance-none opacity-0;
+    }
+
+    .select__wrapper {
+        @apply flex justify-end space-y-1;
+    }
+
+    .select__label {
+        @apply inline-block text-sm font-medium;
+    }
+
+    .select__input {
+        @apply justify-between text-start;
+    }
+
+    .select__list {
+        @apply absolute inset-x-0 z-10 mt-2 max-h-60 origin-top overflow-y-auto rounded-lg py-2.5 ring-1 shadow-xl ring-black/5 bg-surface border border-outline-alternative;
+    }
+
+    .select__option {
+        @apply w-full cursor-pointer items-center justify-between gap-2 px-3 text-on-surface-emphasis hover:bg-link-hover hover:text-link-active-text active:bg-link-active active:text-link-active-text;
+    }
+}

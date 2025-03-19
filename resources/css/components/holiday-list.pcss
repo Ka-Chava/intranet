@@ -1,0 +1,44 @@
+.holiday-list {
+    @apply flex flex-col gap-2;
+
+    .holiday-list__notification {
+        @apply hidden;
+    }
+
+    .holiday-list__counter {
+        @apply absolute -top-1 right-0 flex justify-center items-center min-w-[18px] aspect-square rounded-full text-xs font-bold bg-link text-white;
+    }
+}
+
+.collapsed {
+    .holiday-list {
+        @apply gap-2.5 bg-surface rounded-lg px-2 py-2.5 border border-outline-alternative;
+
+        .holiday-list__select {
+            @apply hidden;
+        }
+    }
+
+    .holiday-list__notification {
+        @apply relative flex justify-center items-center mb-[14px];
+    }
+
+    .holiday-card {
+        @apply p-0 border-0;
+
+        &.holiday-card--empty,
+        .holiday-card__header,
+        .holiday-card__button,
+        .holiday-card__name {
+            @apply hidden;
+        }
+
+        .holiday-card__footer {
+            @apply justify-center;
+        }
+
+        .holiday-card__image-wrapper {
+            @apply min-w-8 min-h-8;
+        }
+    }
+}
