@@ -26,10 +26,10 @@
         @endif
     </div>
 
-    @forelse($holidays as $holiday)
+    @foreach($holidays as $holiday)
         <div
+            wire:key="holiday-{{ $holiday->id }}"
             class="holiday-card"
-            :key="$holiday->id"
             x-data="{ dismissed: false }"
             x-show="!dismissed"
             x-transition:leave="transition transform duration-300 ease-in-out"
@@ -58,12 +58,12 @@
                         @if($holiday->image)
                             <img src="{{ $holiday->image }}" alt="" class="holiday-card__image" />
                         @else
-                            <x-heroicon-o-globe-alt class="holiday-card__image" />
+                            {{ svg(strtolower(str_replace(' ', '-', $holiday->country_name)), 'holiday-card__image') }}
                         @endif
                     </div>
 
                     <span class="holiday-card__name">
-                        Holiday in {{ $holiday->country }}
+                        Holiday in {{ $holiday->country_name }}
                     </span>
                 </div>
 
@@ -76,11 +76,13 @@
                 </button>
             </div>
         </div>
-    @empty
+    @endforeach
+
+    @if(!sizeof($holidays))
         <div class="holiday-card holiday-card--empty">
             <span class="text-center">
                 There are no upcoming holidays
             </span>
         </div>
-    @endforelse
+    @endif
 </div>

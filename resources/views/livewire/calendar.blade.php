@@ -62,9 +62,9 @@
                 >
                     <span x-text="String(date).padStart(2, '0')"></span>
 
-                    <template x-if="isHoliday(date, {{ $holidays }}) && !isSelectedDate(date)">
+                    {{--<template x-if="isHoliday(date, {{ $holidays }}) && !isSelectedDate(date)">
                         <span class="calendar__holiday"></span>
-                    </template>
+                    </template>--}}
                 </div>
             </template>
 

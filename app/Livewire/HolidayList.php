@@ -56,11 +56,8 @@ class HolidayList extends Component
 
     public function dismiss($holidayId)
     {
-        $dismissed = session()->get('dismissed_holidays', []);
-        $dismissed[] = $holidayId;
-        session()->put('dismissed_holidays', array_unique($dismissed));
-
-        $this->dismissedHolidays = $dismissed;
+        $this->dismissedHolidays[] = $holidayId;
+        session()->put('dismissed_holidays', array_unique($this->dismissedHolidays));
 
         $this->loadHolidays();
     }
