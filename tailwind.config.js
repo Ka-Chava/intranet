@@ -101,6 +101,10 @@ export default {
                 'link-hover': 'var(--ui-link-hover-color)',
                 'link-active': 'var(--ui-link-active-color)',
                 'link-active-text': 'var(--ui-link-active-text-color)',
+
+                'notification': 'var(--ui-notification-background)',
+                'notification-foreground': 'var(--ui-notification-foreground)',
+                'notification-foreground-alt': 'var(--ui-notification-foreground-alternative)',
             },
             backgroundImage: {
               before: 'linear-gradient(96deg, #FBD7FF 0%, #FFDEC1 100%)',

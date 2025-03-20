@@ -17,10 +17,10 @@
     </head>
     <body class="font-sans antialiased w-full">
         <x-header.header />
-        <div class="min-h-screen section pt-5" id="WrapperContent">
+        <div class="min-h-screen section" id="WrapperContent">
             <x-aside.side-nav />
             <!-- Page Content -->
-            <main class="w-full container max-w-full mx-auto" id="MainContent">
+            <main class="w-full container flex flex-col gap-6 max-w-full mx-auto px-0 min-w-0" id="MainContent">
                 {{ $slot }}
             </main>
         </div>

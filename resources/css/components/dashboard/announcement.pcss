@@ -1,6 +1,11 @@
 .announcement {
-    @apply bg-[#562EA6] text-white px-5 py-6 rounded;
-    h2 {
-        @apply font-bold;
+    @apply bg-notification text-notification-foreground px-5 py-6 rounded-lg;
+
+    .announcement__heading {
+        @apply mb-1.5 headline-xs text-notification-foreground-alt;
+    }
+
+    .announcement__footer {
+        @apply flex justify-end gap-2 mt-4;
     }
 }
