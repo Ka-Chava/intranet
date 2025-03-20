@@ -2,9 +2,8 @@
 
 @import url('theme/theme.pcss');
 
-@import url('ui/button.pcss');
-@import url('ui/typography.pcss');
-
+@import url('utilities/utilities.pcss');
+@import url('ui/ui.pcss');
 @import url('tailwindcss/components.css');
 @import url('components/header-pill.css');
 @import url('components/user-info.pcss');
@@ -25,14 +24,19 @@ html, body {
 }
 
 #WrapperContent {
-    @apply grid grid-cols-3 gap-x-5 transition-all duration-200;
-    grid-template-columns: 320px 1fr 330px;
+    @apply grid grid-cols-3 gap-x-5 transition-all duration-200 p-5;
+    grid-template-columns: 320px 1fr 320px;
 }
 
 body.is-collapsed #WrapperContent {
-    grid-template-columns: 54px 1fr 330px;
+    grid-template-columns: 54px 1fr 320px;
 }
 
 #MainContent {
 
+}
+
+a,
+button {
+    @apply focusable;
 }
