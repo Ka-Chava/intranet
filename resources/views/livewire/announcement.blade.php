@@ -1,5 +1,5 @@
-@if($hasAnnouncements)
-    <div x-data="{ isDismissed: false }">
+<div x-data="{ isDismissed: false }">
+    @if($hasAnnouncements)
         <div
             class="announcement"
             x-show="!isDismissed"
@@ -30,6 +30,6 @@
                 </button>
             </div>
         </div>
-    </div>
-@endif
+    @endif
+</div>
 

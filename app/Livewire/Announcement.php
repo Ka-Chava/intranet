@@ -3,14 +3,25 @@
 namespace App\Livewire;
 
 use App\Models\Announcement as AnnouncementModel;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class Announcement extends Component
 {
     public function render()
     {
-        $announcement = AnnouncementModel::latest()->first();
         $hasAnnouncements = false;
+
+        $dismissed = session()->get('dismissed_announcements', []);
+        $reminded = collect(session()->get('reminded_announcements', []))
+            ->filter(fn($timestamp) => Carbon::now()->timestamp < $timestamp)
+            ->keys()
+            ->toArray();
+
+        $announcement = AnnouncementModel::whereNotIn('id', $dismissed)
+            ->whereNotIn('id', $reminded)
+            ->orderBy('created_at', 'asc')
+            ->first();
 
         if($announcement) {
             $hasAnnouncements = true;
@@ -24,11 +35,15 @@ class Announcement extends Component
 
     public function dismiss(string $id)
     {
-        // TODO: Add implementation
+        $dismissed = session()->get('dismissed_announcements', []);
+        $dismissed[] = $id;
+        session()->put('dismissed_announcements', array_unique($dismissed));
     }
 
     public function remind(string $id)
     {
-        // TODO: Add implementation
+        $reminded = session()->get('reminded_announcements', []);
+        $reminded[$id] = Carbon::now()->addDay()->timestamp;
+        session()->put('reminded_announcements', $reminded);
     }
 }
