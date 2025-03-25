@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Enums\CountryEnum;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
@@ -44,9 +45,10 @@ class Holiday extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Title', 'title')->rules('required', 'max:120'),
-            Select::make('Country', 'country')->options([
-                'USA','Columbia','Ukraine'
-            ])->required(true),
+            Select::make('Country', 'country')
+                ->options(CountryEnum::getNames())
+                ->displayUsingLabels()
+                ->required(true),
             Date::make('Date', 'date')->showOnIndex()->hideFromDetail(),
 
         ];
