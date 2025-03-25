@@ -1,6 +1,7 @@
 @import url('tailwindcss/base.css');
 
 @import url('theme/theme.pcss');
+@import url('utilities/utilities.pcss');
 @import url('ui/ui.pcss');
 
 @import url('tailwindcss/components.css');
@@ -30,4 +31,9 @@ html, body {
 
 #MainContent {
 
+}
+
+a,
+button {
+    @apply focusable;
 }
