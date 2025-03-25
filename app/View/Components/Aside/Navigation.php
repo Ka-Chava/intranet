@@ -17,7 +17,7 @@ class Navigation extends Component
     {
         $this->links = $links ?: [
             ['url' =>'dashboard', 'title' => 'Dashboard', 'icon' => 'grid'],
-            ['url' =>'dashboard', 'title' => 'Handbook', 'icon' => 'file'],
+            ['url' =>'handbook', 'title' => 'Handbook', 'icon' => 'file'],
             ['url' =>'dashboard', 'title' => 'Company News', 'icon' => 'apartment'],
             ['url' =>'dashboard', 'title' => 'Help Desk', 'icon' => 'laptop'],
             ['url' =>'dashboard', 'title' => 'I.T. News', 'icon' => 'database'],

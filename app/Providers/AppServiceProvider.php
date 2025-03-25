@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\View;
@@ -24,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Event::listen(function (\SocialiteProviders\Manager\SocialiteWasCalled $event) {
             $event->extendSocialite('okta', \SocialiteProviders\Okta\Provider::class);
+        });
+
+        Blade::directive('handleize', function ($expression) {
+            return "<?php echo \Illuminate\Support\Str::slug($expression); ?>";
         });
     }
 }

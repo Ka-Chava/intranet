@@ -1,0 +1,42 @@
+.handbook-sections {
+    @apply flex flex-col gap-20 text-on-surface-emphasis list-roman list-inside marker:text-headline-md;
+
+    .handbook-sections__title {
+        @apply headline-md inline;
+    }
+
+    .handbook-sections__description {
+        @apply headline-xs font-normal mt-1;
+    }
+
+    .handbook-sections__group {
+        @apply relative;
+    }
+
+    .handbook-sections__grid {
+        @apply mt-6 transition-all duration-200 ease-linear max-h-[300px] h-full overflow-hidden;
+
+        &.expanded {
+            @apply max-h-none h-auto;
+        }
+    }
+
+    .handbook-sections__scrim {
+        @apply absolute bottom-0 z-10 h-[30px] flex justify-center items-center w-full pt-3;
+        background: linear-gradient(180deg, rgba(22, 22, 22, 0.00) 0%, var(--ui-color-canvas) 100%);
+    }
+
+    .handbook-sections__button {
+        @apply absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-surface text-on-surface-emphasis border border-btn-border hover:bg-link-hover hover:text-link-active-text active:bg-link-active active:text-link-active-text;
+
+        .icon {
+            @apply rotate-90 transition-all duration-200 ease-linear;
+        }
+
+        &.expanded {
+            .icon {
+                @apply -rotate-90;
+            }
+        }
+    }
+}

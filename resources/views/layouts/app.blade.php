@@ -18,7 +18,7 @@
     <body class="font-sans antialiased w-full">
         <x-header.header />
 
-        <div class="min-h-screen section pt-5" id="WrapperContent">
+        <div class="min-h-screen section pt-5 !px-5" id="WrapperContent">
             <x-aside.side-nav>
                 <x-slot:header>
                     <x-aside.user-info />
@@ -31,6 +31,10 @@
             <main class="w-full container flex flex-col gap-6 max-w-full mx-auto px-0 min-w-0" id="MainContent">
                 {{ $slot }}
             </main>
+
+            @if(Route::current()->getName() === 'handbook')
+                <livewire:handbook-drawer />
+            @endif
 
             <x-aside.side-nav position="right">
                 <x-slot:header>

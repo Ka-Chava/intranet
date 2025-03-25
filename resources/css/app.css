@@ -6,14 +6,19 @@
 
 @import url('tailwindcss/components.css');
 @import url('components/header-pill.css');
+@import url('components/drawer.pcss');
 @import url('components/header/header.pcss');
 @import url('components/aside/aside.pcss');
 @import url('components/global/page-header.pcss');
 @import url('components/calendar.pcss');
 @import url('components/holiday-list.pcss');
 @import url('components/holiday-card.pcss');
+
 @import url('components/dashboard/dashboard.pcss');
+@import url('components/handbook/handbook.pcss');
+
 @import url('store/employee-store.pcss');
+
 @import url('tailwindcss/utilities.css');
 
 html, body {
@@ -26,11 +31,15 @@ html, body {
 }
 
 #WrapperContent {
-    @apply flex gap-x-5;
+    @apply flex gap-x-5 items-start;
 }
 
 #MainContent {
 
+}
+
+#HandbookDrawer.active + .side-nav {
+    @apply fixed bottom-0 right-5;
 }
 
 a,

@@ -19,6 +19,9 @@ export default {
             },
         },
         extend: {
+            listStyleType: {
+              roman: 'lower-roman',
+            },
             fontSize: {
                 'page-header': ['24px', '32px'],
                 'display-lg': ['60px', {
@@ -105,6 +108,9 @@ export default {
                 'notification': 'var(--ui-notification-background)',
                 'notification-foreground': 'var(--ui-notification-foreground)',
                 'notification-foreground-alt': 'var(--ui-notification-foreground-alternative)',
+
+                'off-canvas': 'var(--ui-off-canvas-color)',
+                'off-canvas-text': 'var(--ui-off-canvas-text-color)',
             },
             backgroundImage: {
               before: 'linear-gradient(96deg, #FBD7FF 0%, #FFDEC1 100%)',
