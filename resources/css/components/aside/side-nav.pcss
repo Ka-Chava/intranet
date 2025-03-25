@@ -1,0 +1,31 @@
+.side-nav {
+    @apply overflow-hidden flex flex-col shrink-0 w-[320px] transition-all duration-200;
+
+    .side-nav__header {
+        @apply flex items-center justify-between gap-4;
+
+        &.side-nav__header--right {
+            @apply flex-row-reverse;
+        }
+    }
+
+    .side-nav__button {
+        @apply ml-auto px-2.5 py-2 bg-surface border border-outline-alternative text-on-surface-de-emphasis hover:bg-link-hover hover:text-link-active-text active:bg-link-active active:text-link-active-text;
+
+        &.side-nav__button--right {
+            @apply ml-0 mr-auto;
+        }
+    }
+
+    &.collapsed {
+        @apply w-[54px];
+
+        .side-nav__button {
+            @apply rounded-lg w-[54px];
+        }
+    }
+
+    svg {
+        @apply min-w-5 min-h-5 w-5 h-5;
+    }
+}

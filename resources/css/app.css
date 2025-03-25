@@ -1,15 +1,17 @@
-@import url("tailwindcss/base.css");
+@import url('tailwindcss/base.css');
 
 @import url('theme/theme.pcss');
-
 @import url('utilities/utilities.pcss');
 @import url('ui/ui.pcss');
+
 @import url('tailwindcss/components.css');
 @import url('components/header-pill.css');
-@import url('components/user-info.pcss');
-@import url('components/side-nav.pcss');
 @import url('components/header/header.pcss');
+@import url('components/aside/aside.pcss');
 @import url('components/global/page-header.pcss');
+@import url('components/calendar.pcss');
+@import url('components/holiday-list.pcss');
+@import url('components/holiday-card.pcss');
 @import url('components/dashboard/dashboard.pcss');
 @import url('store/employee-store.pcss');
 @import url('tailwindcss/utilities.css');
@@ -24,12 +26,7 @@ html, body {
 }
 
 #WrapperContent {
-    @apply grid grid-cols-3 gap-x-5 transition-all duration-200 p-5;
-    grid-template-columns: 320px 1fr 320px;
-}
-
-body.is-collapsed #WrapperContent {
-    grid-template-columns: 54px 1fr 320px;
+    @apply flex gap-x-5;
 }
 
 #MainContent {
