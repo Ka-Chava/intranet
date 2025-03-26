@@ -9,7 +9,7 @@
         <button
             id="CollapseNavigation"
             aria-label="Collapse Navigation"
-            @class(['button', 'side-nav__button', 'side-nav__button--right' => $position === 'right'])
+            @class(['card', 'card--clickable', 'button', 'side-nav__button', 'side-nav__button--right' => $position === 'right'])
             @click="collapsed = !collapsed"
         >
             <span {{ $position === 'right' ? 'x-show=!collapsed' : 'x-show=collapsed' }}>

@@ -113,8 +113,14 @@ export default {
                 'off-canvas-text': 'var(--ui-off-canvas-text-color)',
             },
             backgroundImage: {
-              before: 'linear-gradient(96deg, #FBD7FF 0%, #FFDEC1 100%)',
-              after: 'linear-gradient(96deg, #845BDC -30%, #FFDEC1 100%)',
+                before: 'linear-gradient(96deg, #FBD7FF 0%, #FFDEC1 100%)',
+                after: 'linear-gradient(96deg, #845BDC -30%, #FFDEC1 100%)',
+            },
+            transitionDuration: {
+                primary: 'var(--ui-primary-transition-duration)',
+            },
+            transitionTimingFunction: {
+                primary: 'var(--ui-primary-transition-function)',
             },
         },
     },

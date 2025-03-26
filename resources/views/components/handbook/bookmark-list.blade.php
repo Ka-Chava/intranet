@@ -11,7 +11,7 @@
 
     <div class="handbook-grid">
         @foreach(range(1, 3) as $index)
-            <button type="button" class="bookmark-card-empty">
+            <button type="button" class="card card--transparent card--clickable bookmark-card-empty">
                 Add a bookmark
 
                 <x-icon-plus-square class="bookmark-card-empty__icon" />

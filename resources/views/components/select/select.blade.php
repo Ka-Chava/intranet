@@ -1,5 +1,5 @@
 <div
-    x-data="createSelect({{ json_encode($options) }}, '{{ $selected }}')"
+    x-data="new Select({{ json_encode($options) }}, '{{ $selected }}')"
     {{ $attributes->only('class')->merge(['class' => 'select']) }} {{$attributes}}
 >
     <select
@@ -52,10 +52,10 @@
         x-transition:enter-end="opacity-100 translate-y-0"
         x-transition:leave="transition ease-in duration-75"
         x-transition:leave-start="opacity-100 translate-y-0"
-        x-transition:leave-end="opacity-0 translate-y-10"
+        x-transition:leave-end="opacity-0 -translate-y-3"
         x-on:click.outside="closeMenu()"
         x-on:keydown.esc.prevent.stop="closeMenu()"
-        class="select__list"
+        class="menu select__list"
         id="{{ $id }}-menu-list"
         aria-labelledby="{{ $id }}-button"
         aria-orientation="vertical"
@@ -67,9 +67,9 @@
                 x-on:click="setSelected(option); $dispatch('change', option.value)"
                 :aria-selected="isSelected(option.value)"
                 :title="option.label"
-                class="button button--small select__option"
+                class="button button--small menu__item select__option"
                 role="option"
-                tabindex="-1"
+                tabindex="0"
             >
                 <div class="grow truncate" x-text="option.label"></div>
 
@@ -78,29 +78,3 @@
         </template>
     </ul>
 </div>
-
-<script>
-    function createSelect(options = [], selected = null) {
-        return {
-            open: false,
-            options: [],
-            selected: null,
-            selectedOption: null,
-            init() {
-                this.selected = selected;
-                this.options = options;
-                this.selectedOption = this.options.find(option => String(option.value) === String(this.selected));
-            },
-            openMenu() { this.open = true; },
-            closeMenu() { this.open = false; },
-            setSelected({value, label}) {
-                this.selected = value;
-                this.selectedOption = {value, label};
-                this.closeMenu();
-            },
-            isSelected(value) {
-                return String(value) === String(this.selected);
-            },
-        };
-    }
-</script>

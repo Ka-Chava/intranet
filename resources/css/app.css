@@ -23,7 +23,7 @@
 
 html, body {
     font-family: Figtree, ui-sans-serif, system-ui, sans-serif;
-    @apply text-on-surface-emphasis bg-canvas;
+    @apply text-on-surface-emphasis bg-canvas overscroll-none;
 }
 
 .section {
@@ -39,7 +39,7 @@ html, body {
 }
 
 #HandbookDrawer.active + .side-nav {
-    @apply fixed bottom-0 right-5;
+    @apply w-[540px] -mr-5 opacity-0 delay-[55ms];
 }
 
 a,

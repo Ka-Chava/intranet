@@ -11,3 +11,40 @@
     scrollbar-width: none;
 }
 
+.scrollable {
+    &::-webkit-scrollbar {
+        @apply w-2.5 h-2.5;
+    }
+
+    &::-webkit-scrollbar-track {
+       @apply bg-transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        @apply bg-transparent;
+    }
+}
+
+@media (-moz-touch-enabled: 0), (hover: hover) {
+    .scrollable:hover::-webkit-scrollbar-thumb {
+        @apply rounded-full bg-link;
+    }
+}
+
+.flowing-all {
+    @apply transition-all;
+}
+
+.flowing-colors {
+    @apply transition-colors;
+}
+
+.flowing-transform {
+    @apply transition-transform;
+}
+
+.flowing-all,
+.flowing-colors,
+.flowing-transform {
+    @apply duration-primary ease-primary;
+}

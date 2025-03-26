@@ -1,17 +1,11 @@
 <div
+    x-cloak
     x-data="{open: false, smooth: false}"
-    x-show="open"
     id="HandbookDrawer"
     role="document"
     tabindex="-1"
     class="drawer handbook-drawer"
     :class="{'active': open}"
-    x-transition:enter-start="active translate-x-full"
-    x-transition:enter="active transition-all ease-linear duration-200"
-    x-transition:enter-end="active translate-x-0"
-    x-transition:leave="active transition-all ease-linear duration-200"
-    x-transition:leave-start="active translate-x-0"
-    x-transition:leave-end="active translate-x-full"
     @keydown.esc.prevent="open = false; smooth = false;"
     @open-handbook-drawer.window="
         setTimeout(() => {
@@ -75,6 +69,10 @@
                         @endforeach
                     </div>
                 @endif
+
+                <button class="button button--small button--secondary flex mt-8 ml-auto">
+                    <x-heroicon-o-arrow-down-tray /> Download
+                </button>
             </div>
         @endforeach
     </div>

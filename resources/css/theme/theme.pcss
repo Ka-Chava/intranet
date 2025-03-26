@@ -1,6 +1,9 @@
 :root {
     --ui-header-height: 70px;
 
+    --ui-primary-transition-duration: 150ms;
+    --ui-primary-transition-function: linear;
+
     /* Surface colors */
     --ui-color-canvas: #FFFFFF;
     --ui-color-surface: #FFFFFF;
@@ -93,4 +96,8 @@
     --ui-link-hover-color: #392959;
 
     --ui-notification-background: #562EA666;
+}
+
+.no-animate {
+    --ui-primary-transition-duration: 0ms;
 }

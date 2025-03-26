@@ -10,54 +10,42 @@
             </p>
 
             @if(!empty($section->posts))
-                <div
-                    class="handbook-sections__group"
-                    :key="@handleize($section->title)"
-                    x-data="{
-                        expanded: false,
-                        showExpand: false,
-                        observer: null,
-                        calc() { this.showExpand = $refs.content.scrollHeight > 300; }
-                    }"
-                    x-init="
-                        calc();
-                        observer = new ResizeObserver(() => { calc(); });
-                        observer.observe($refs.content);
-                    "
-                >
-                    <ol
-                        class="handbook-grid handbook-sections__grid"
-                        :class="{ 'expanded': expanded }"
-                        x-ref="content"
+                <div :key="@handleize($section->title)" class="handbook-sections__group" x-data="new HandbookSection()">
+                    <div
+                        class="handbook-sections__grid-wrapper"
+                        :class="{ 'flowing-all': animated }"
+                        x-bind:style="showExpand && (!expanded ? 'height: 300px' : 'height:' + height + 'px')"
                     >
-                        @foreach($section->posts as $post)
-                            <li
-                                class="handbook-card button"
-                                tabindex="0"
-                                title="{{ $post->title }}"
-                                @click="$dispatch('open-handbook-drawer', { target: '@handleize($section->title . $post->title)' })"
-                                @keypress.enter="$dispatch('open-handbook-drawer', { target: '@handleize($section->title . $post->title)' })"
-                            >
-                                <div class="handbook-card__content">
-                                    <h3 class="handbook-card__title">
-                                        {{ $loop->parent->iteration }}.{{ $loop->iteration }} {{ $post->title }}
-                                    </h3>
+                        <ol class="handbook-grid" x-ref="content">
+                            @foreach($section->posts as $post)
+                                <li
+                                    tabindex="0"
+                                    title="{{ $post->title }}"
+                                    class="card card--clickable button handbook-card"
+                                    @click="$dispatch('open-handbook-drawer', { target: '@handleize($section->title . $post->title)' })"
+                                    @keypress.enter="$dispatch('open-handbook-drawer', { target: '@handleize($section->title . $post->title)' })"
+                                >
+                                    <div class="handbook-card__content">
+                                        <h3 class="handbook-card__title">
+                                            {{ $loop->parent->iteration }}.{{ $loop->iteration }} {{ $post->title }}
+                                        </h3>
 
-                                    <p class="handbook-card__preview">
-                                        {{ $post->content }}
-                                    </p>
-                                </div>
+                                        <p class="handbook-card__preview">
+                                            {{ $post->content }}
+                                        </p>
+                                    </div>
 
-                                <x-icon-log-out-right class="handbook-card__icon" />
-                            </li>
-                        @endforeach
-                    </ol>
+                                    <x-icon-log-out-right class="handbook-card__icon" />
+                                </li>
+                            @endforeach
+                        </ol>
+                    </div>
 
-                    <div x-show="showExpand" class="handbook-sections__scrim">
+                    <div class="handbook-sections__scrim" :class="{ 'expanded': expanded }" x-show="showExpand">
                         <button
-                            class="button button--small handbook-sections__button"
-                            :class="{'expanded': expanded}"
-                            @click="expanded = !expanded"
+                            class="button button--small card card--clickable handbook-sections__button"
+                            :class="{ 'expanded': expanded }"
+                            @click="animate()"
                         >
                             <span x-text="expanded ? 'View less' : 'View more'"></span>
 

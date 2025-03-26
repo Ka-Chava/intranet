@@ -1,10 +1,10 @@
 .drawer {
-    @apply sticky z-10 flex w-[340px] flex-col -mt-5 -mr-5 will-change-transform end-0 bg-off-canvas text-off-canvas-text transition-all duration-200 ease-linear;
+    @apply fixed z-10 flex w-[540px] flex-col will-change-transform end-0 bg-off-canvas text-off-canvas-text flowing-all translate-x-full;
     top: var(--ui-header-height, 0);
     height: calc(100dvh - var(--ui-header-height, 0));
 
     &.active {
-        @apply w-[540px];
+        @apply translate-x-0;
     }
 
     .drawer__button {
@@ -16,11 +16,12 @@
     }
 
     .drawer__body {
-        @apply relative flex grow flex-col overflow-y-auto overscroll-contain p-5;
+        @apply relative flex grow flex-col overflow-y-auto overscroll-contain p-5 scrollable;
 
         &::before,
         &::after {
-            @apply content-[''] fixed left-0 block w-full h-5;
+            @apply content-[''] fixed left-1/2 block h-5 -translate-x-1/2;
+            width: calc(100% - 30px);
         }
 
         &::before {

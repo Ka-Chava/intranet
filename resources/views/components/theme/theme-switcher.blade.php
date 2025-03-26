@@ -1,6 +1,6 @@
 <button
     type="button"
-    class="button header-pill"
+    class="button card card--clickable header-pill"
     x-data="{ theme: Theme.get() }"
     @click="theme = theme === 'light' ? 'dark' : 'light'; Theme.set(theme);"
 >
