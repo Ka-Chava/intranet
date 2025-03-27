@@ -1,0 +1,21 @@
+.handbook-card {
+    @apply max-w-full p-6;
+    box-shadow: 0 2px 6px 0 rgba(22, 22, 22, 0.20);
+
+    .handbook-card__content {
+        @apply flex flex-col gap-2;
+        max-width: calc(100% - 32px);
+    }
+
+    .handbook-card__title {
+        @apply headline-xs truncate;
+    }
+
+    .handbook-card__preview {
+        @apply text-sm truncate;
+    }
+
+    .handbook-card__icon {
+        @apply min-w-6 min-h-6 w-6 h-6;
+    }
+}

@@ -1,5 +1,5 @@
 .button {
-    @apply z-[1] inline-flex gap-2 justify-center items-center w-fit px-4 py-2 rounded text-base font-normal text-btn-primary-text transition-colors duration-200 ease-linear outline-offset-2 cursor-pointer;
+    @apply z-[1] inline-flex gap-2 justify-center items-center w-fit px-4 py-2 rounded text-base font-normal text-btn-primary-text flowing-colors outline-offset-2 cursor-pointer;
 
     &[disabled],
     &.disabled {
@@ -23,8 +23,8 @@
     }
 
     &.button--special {
-        @apply before:absolute before:inset-0 before:rounded before:z-[-1] before:transition-all before:duration-200 before:ease-linear before:bg-before;
-        @apply after:absolute after:inset-0 after:rounded after:z-[-1] after:transition-all after:duration-200 after:ease-linear after:bg-after after:opacity-0;
+        @apply before:absolute before:inset-0 before:rounded before:z-[-1] before:transition-all before:duration-primary before:ease-primary before:bg-before;
+        @apply after:absolute after:inset-0 after:rounded after:z-[-1] after:transition-all after:duration-primary after:ease-primary after:bg-after after:opacity-0;
         @apply text-btn-special-text relative hover:after:opacity-100 focus-visible:after:opacity-100;
     }
 

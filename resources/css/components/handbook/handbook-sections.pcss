@@ -1,0 +1,45 @@
+.handbook-sections {
+    @apply flex flex-col gap-20 text-on-surface-emphasis list-roman list-inside marker:text-headline-md;
+
+    .handbook-sections__title {
+        @apply headline-md inline;
+    }
+
+    .handbook-sections__description {
+        @apply headline-xs font-normal mt-1;
+    }
+
+    .handbook-sections__group {
+        @apply relative;
+    }
+
+    .handbook-sections__grid-wrapper {
+        @apply mt-6 overflow-hidden;
+    }
+
+    .handbook-sections__scrim {
+        @apply absolute bottom-0 z-10 min-h-[30px] flex justify-center items-center w-full pt-3;
+        @apply before:absolute before:inset-0 before:block before:w-full before:h-full before:-translate-y-full;
+        background: linear-gradient(180deg, rgba(22, 22, 22, 0.00) 0%, var(--ui-color-canvas) 100%);
+
+        &.expanded {
+            @apply static before:content-none pt-6;
+        }
+    }
+
+    .handbook-sections__button {
+        @apply absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded border-btn-border text-on-surface-emphasis;
+
+        .icon {
+            @apply rotate-90 flowing-transform;
+        }
+
+        &.expanded {
+            @apply static transform-none;
+
+            .icon {
+                @apply -rotate-90;
+            }
+        }
+    }
+}

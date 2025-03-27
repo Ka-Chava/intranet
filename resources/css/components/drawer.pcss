@@ -1,0 +1,37 @@
+.drawer {
+    @apply fixed z-10 flex w-[540px] flex-col will-change-transform end-0 bg-off-canvas text-off-canvas-text flowing-all translate-x-full;
+    top: var(--ui-header-height, 0);
+    height: calc(100dvh - var(--ui-header-height, 0));
+
+    &.active {
+        @apply translate-x-0;
+    }
+
+    .drawer__button {
+        @apply px-2.5 py-2;
+    }
+
+    .drawer__header {
+        @apply flex items-center justify-between px-5 pt-5 pb-3;
+    }
+
+    .drawer__body {
+        @apply relative flex grow flex-col overflow-y-auto overscroll-contain p-5 scrollable;
+
+        &::before,
+        &::after {
+            @apply content-[''] fixed left-1/2 block h-5 -translate-x-1/2;
+            width: calc(100% - 30px);
+        }
+
+        &::before {
+            top: 70px;
+            background: linear-gradient(0deg, rgba(86, 46, 166, 0.00) 0%, #562EA6 100%);
+        }
+
+        &::after {
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(86, 46, 166, 0.00) 0%, #562EA6 100%);
+        }
+    }
+}

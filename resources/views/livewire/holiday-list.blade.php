@@ -29,7 +29,7 @@
     @foreach($holidays as $holiday)
         <div
             wire:key="holiday-{{ $holiday->id }}"
-            class="holiday-card"
+            class="card holiday-card"
             x-data="{ dismissed: false }"
             x-show="!dismissed"
             x-transition:leave="transition transform duration-300 ease-in-out"
@@ -79,7 +79,7 @@
     @endforeach
 
     @if(!sizeof($holidays))
-        <div class="holiday-card holiday-card--empty">
+        <div class="card holiday-card holiday-card--empty">
             <span class="text-center">
                 There are no upcoming holidays
             </span>

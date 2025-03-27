@@ -1,4 +1,4 @@
-<nav {{ $attributes->merge(['class' => 'navigation']) }}>
+<nav {{ $attributes->merge(['class' => 'card navigation']) }}>
     <h2 class="navigation__heading">
         <span class="navigation__logo">
             <x-heroicon-o-home />
@@ -23,7 +23,7 @@
             <li {{ $is_active ? "class=active" : null }}>
                 <a
                     href="{{ $url }}"
-                    class="navigation__link"
+                    class="card card--clickable navigation__link"
                     {{ $is_external ? "target=_blank" : "wire:navigate" }}
                     {{ $is_active ? "aria-current=page" : null }}
                 >

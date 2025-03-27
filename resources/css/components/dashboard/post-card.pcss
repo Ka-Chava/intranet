@@ -1,9 +1,9 @@
 .post-card {
-    @apply relative flex flex-col gap-5 p-6 rounded-lg bg-surface text-on-surface-emphasis border border-outline-alternative;
+    @apply relative flex flex-col gap-5 p-6;
 
     .post-card__content {
         @apply relative w-full aspect-[68/49] overflow-hidden rounded-lg;
-        @apply after:absolute after:indent-0 after:w-full after:h-full after:rounded-lg after:transition-opacity after:duration-200 after:ease-linear after:bg-gradient-to-b after:from-transparent after:via-black/10 after:to-transparent dark:after:via-white/10;
+        @apply after:absolute after:indent-0 after:w-full after:h-full after:rounded-lg after:transition-opacity after:duration-primary after:ease-primary after:bg-gradient-to-b after:from-transparent after:via-black/10 after:to-transparent dark:after:via-white/10;
     }
 
     .post-card__image,
@@ -12,7 +12,7 @@
     }
 
     .post-card__image {
-        @apply object-cover transition-transform duration-200 ease-linear will-change-transform;
+        @apply object-cover flowing-transform will-change-transform;
     }
 
     .post-card__footer {

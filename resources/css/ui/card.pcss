@@ -1,0 +1,11 @@
+.card {
+    @apply bg-surface text-on-surface-emphasis rounded-lg border border-outline-alternative;
+
+    &.card--transparent {
+        @apply bg-transparent;
+    }
+
+    &.card--clickable {
+        @apply flowing-colors hover:bg-link-hover hover:text-link-active-text hover:shadow-none active:bg-link-active active:text-link-active-text;
+    }
+}

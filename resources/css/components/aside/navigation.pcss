@@ -1,8 +1,8 @@
 .navigation {
-    @apply p-6 rounded-lg bg-surface text-on-surface-emphasis border border-outline-alternative transition-all duration-200 ease-linear;
+    @apply p-6 flowing-all;
 
     .navigation__link {
-        @apply inline-flex items-center gap-2.5 w-full rounded p-2 whitespace-nowrap transition-colors duration-200 text-on-surface-de-emphasis hover:bg-link-hover hover:text-link-active-text active:bg-link-active active:text-link-active-text;
+        @apply inline-flex items-center gap-2.5 w-full rounded p-2 whitespace-nowrap border-0;
     }
 
     .navigation__list {
@@ -13,7 +13,7 @@
         @apply w-full min-h-7 font-bold text-2xl leading-7;
     }
 
-    .active:first-of-type .navigation__link {
+    .active .navigation__link {
         @apply bg-link-active text-link-active-text hover:bg-link-active hover:text-link-active-text;
     }
 

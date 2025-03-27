@@ -1,0 +1,35 @@
+.handbook-drawer {
+    @apply shrink-0;
+
+    .handbook-drawer__content {
+        @apply [counter-reset:item];
+
+        p {
+            @apply text-sm font-normal;
+        }
+
+        p + p {
+            @apply mt-1.5;
+        }
+    }
+
+    .handbook-drawer__headline {
+        @apply flex items-start gap-2 w-full mt-16 [counter-increment:item] before:inline before:text-headline-md before:content-[counter(item,lower-roman)'.'];
+
+        & + p {
+            @apply mt-2.5;
+        }
+    }
+
+    .handbook-drawer__actions {
+        @apply flex gap-1 ml-auto;
+    }
+
+    .handbook-drawer__group {
+        @apply flex flex-col gap-6 mt-2.5;
+    }
+
+    .handbook-drawer__block {
+        @apply flex flex-col gap-2.5;
+    }
+}
