@@ -1,0 +1,19 @@
+.form {
+    @apply text-on-surface-default;
+
+    .form__field {
+        @apply flex flex-col gap-1;
+    }
+
+    .form__label {
+        @apply flex justify-between gap-1 text-xs;
+    }
+
+    .form__error {
+        @apply text-negative;
+    }
+
+    .form__control {
+        @apply w-full min-h-10 bg-surface-active rounded focusable border border-outline-alternative placeholder:text-placeholder flowing-colors hover:border-outline-reversed focus-within:outline focus-within:outline-offset-2 focus-within:outline-2 focus-within:outline-btn-outline;
+    }
+}

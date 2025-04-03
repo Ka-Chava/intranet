@@ -16,6 +16,7 @@
         "vite": "^6.0"
     },
     "dependencies": {
+        "@alpinejs/focus": "^3.14.9",
         "postcss-import": "^16.1.0",
         "postcss-nesting": "^13.0.1"
     }

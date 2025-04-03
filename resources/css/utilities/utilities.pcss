@@ -1,5 +1,9 @@
 .focusable {
-    @apply focus:outline-0 focus-visible:outline-2 focus-visible:outline-btn-outline;
+    @apply focus:outline-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-btn-outline;
+
+    &:focus {
+        box-shadow: none;
+    }
 }
 
 .no-scrollbar::-webkit-scrollbar {

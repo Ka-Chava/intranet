@@ -1,0 +1,24 @@
+.modal {
+    .modal__backdrop {
+        @apply z-[100] fixed inset-0 flex items-center justify-center overflow-y-auto overflow-x-hidden p-4 backdrop-blur-lg will-change-auto;
+    }
+
+    .modal__dialog {
+        @apply card mx-auto flex w-full max-w-fit flex-col overflow-hidden bg-white will-change-auto;
+        max-height: calc(100dvh - 80px);
+    }
+
+    .modal__container {
+        @apply p-6 flex flex-col h-full;
+    }
+
+    .modal__header {
+        @apply flex flex-row items-center justify-between;
+    }
+
+    .modal__body {
+        @apply scrollable overflow-y-auto min-h-[150px] -mr-3 pr-3;
+        flex: 1 0 auto;
+        max-height: calc(100dvh - 128px);
+    }
+}

@@ -1,0 +1,27 @@
+.file-input {
+    @apply flex justify-between w-full appearance-none border border-dashed border-[#515151] rounded outline-offset-2 flowing-colors hover:border-outline-reversed focus-within:outline focus-within:outline-2 focus-within:outline-btn-outline;
+
+    .file-input__container {
+        @apply relative py-2 px-3 flex flex-col justify-center flex-grow flex-shrink;
+    }
+
+    .file-input__control {
+        @apply absolute inset-0 z-50 m-0 p-0 w-full h-full outline-none opacity-0 cursor-pointer;
+    }
+
+    .file-input__placeholder {
+        @apply text-placeholder;
+    }
+
+    .file-input__value {
+        @apply flex flex-col gap-1;
+    }
+
+    .file-input__line {
+        @apply flex flex-row items-center space-x-2;
+    }
+
+    .file-input__button {
+        @apply my-2 mx-3 ml-0;
+    }
+}
