@@ -3,5 +3,13 @@
 
     .menu__item {
         @apply w-full cursor-pointer items-center justify-between gap-2 px-3 text-on-surface-emphasis focusable hover:bg-link-hover hover:text-link-active-text active:bg-link-active active:text-link-active-text;
+
+        &.active {
+            @apply bg-link-active text-link-active-text;
+        }
+    }
+
+    .menu__divider {
+        @apply block h-px bg-toolbar-divider my-2;
     }
 }

@@ -17,6 +17,7 @@
 @import url('components/dashboard/dashboard.pcss');
 @import url('components/handbook/handbook.pcss');
 @import url('components/helpdesk/helpdesk.pcss');
+@import url('components/rte/rte.pcss');
 
 @import url('store/employee-store.pcss');
 

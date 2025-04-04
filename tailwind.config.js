@@ -9,6 +9,7 @@ export default {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './resources/js/**/*.js',
     ],
 
     theme: {
@@ -20,7 +21,10 @@ export default {
         },
         extend: {
             listStyleType: {
-              roman: 'lower-roman',
+                roman: 'lower-roman',
+                alpha: 'lower-alpha',
+                circle: 'circle',
+                square: 'square',
             },
             fontSize: {
                 'page-header': ['24px', '32px'],
@@ -119,6 +123,9 @@ export default {
                 'off-canvas-text': 'var(--ui-off-canvas-text-color)',
 
                 'placeholder': 'var(--ui-input-placeholder)',
+
+                'toolbar': 'var(--ui-toolbar)',
+                'toolbar-divider': 'var(--ui-toolbar-divider)',
             },
             backgroundImage: {
                 before: 'linear-gradient(96deg, #FBD7FF 0%, #FFDEC1 100%)',

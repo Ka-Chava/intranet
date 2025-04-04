@@ -75,7 +75,7 @@
             />
         </label>
 
-        <label for="description" class="form__field">
+        <span class="form__field">
             <span class="form__label">
                 <span>Description*</span>
 
@@ -84,14 +84,12 @@
                 @endif
             </span>
 
-            <textarea
-                name="description"
-                id="description"
-                class="form__control"
-                placeholder="Please describe your problem or question in detail..."
+            <x-rich-text-editor
                 wire:model="description"
-            ></textarea>
-        </label>
+                placeholder="Please describe your problem or question in detail..."
+                {{--wire:poll.10000ms="autosave"--}}
+            />
+        </span>
 
         <label for="attachment" class="form__field">
             <span class="form__label">
@@ -168,8 +166,8 @@
                 Submit
 
                 <span wire:loading wire:target="submit">
-                <x-heroicon-o-arrow-path class="animate-spin" />
-            </span>
+                    <x-heroicon-o-arrow-path class="animate-spin" />
+                </span>
             </button>
         </div>
     @endif
