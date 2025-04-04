@@ -13,6 +13,7 @@ class Select extends Component
     public ?string $name;
     public ?string $placeholder;
     public ?string $selected;
+    public ?string $appearance;
 
     public function __construct(
         array $options = [],
@@ -20,7 +21,8 @@ class Select extends Component
         ?string $id = 'select-menu',
         ?string $name = 'select-menu',
         ?string $placeholder = 'Select an option',
-        ?string $selected = null
+        ?string $selected = null,
+        ?string $appearance = 'primary'
     ) {
         $this->options = $options;
         $this->label = $label;
@@ -28,6 +30,7 @@ class Select extends Component
         $this->name = $name;
         $this->placeholder = $placeholder;
         $this->selected = $selected;
+        $this->appearance = $appearance;
     }
 
     /**

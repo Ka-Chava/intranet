@@ -1,0 +1,51 @@
+.rte-toolbar {
+    @apply flex items-stretch w-fit px-2 py-1 rounded-md bg-toolbar;
+
+    .rte-toolbar__block {
+        @apply flex gap-0.5;
+
+        & > * {
+            @apply max-h-6 leading-none;
+        }
+
+        & + .rte-toolbar__block {
+            @apply ml-3 pl-3 border-l border-l-toolbar-divider;
+        }
+    }
+
+    .rte-toolbar__button {
+        @apply p-1 gap-0.5 leading-none text-inherit hover:bg-link-hover hover:text-link-active-text;
+
+        &.active {
+            @apply bg-link-active text-link-active-text;
+        }
+    }
+
+    .rte-toolbar__dropdown {
+        button {
+            @apply h-full;
+        }
+
+        [role="listbox"] {
+            @apply left-0;
+        }
+
+        &.rte-toolbar__dropdown--end {
+            [role="listbox"] {
+                @apply right-0 left-auto;
+            }
+        }
+    }
+
+    .rte-toolbar__menu {
+        @apply max-h-[200px] overflow-y-auto scrollable;
+    }
+
+    .rte-toolbar__color {
+        @apply border-b-2 border-b-transparent;
+    }
+
+    .rte-toolbar__link {
+        @apply min-w-[350px] flex flex-col items-end gap-2;
+    }
+}

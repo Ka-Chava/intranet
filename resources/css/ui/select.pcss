@@ -15,10 +15,14 @@
 
     .select__input {
         @apply justify-between text-start;
+
+        &.select__input--outline {
+            @apply w-full leading-none min-h-10 focus-visible:outline-offset-[3px] text-inherit;
+        }
     }
 
     .select__list {
-        @apply absolute right-0 z-10 mt-2 min-w-[100px] max-h-60 origin-top overflow-y-auto py-2.5 ring-1 shadow-xl ring-black/5;
+        @apply absolute right-0 z-10 mt-2 min-w-[100px] w-full max-h-60 origin-top overflow-y-auto py-2.5 ring-1 shadow-xl ring-black/5;
     }
 
     .select__option {

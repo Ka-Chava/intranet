@@ -6,9 +6,9 @@
         id="{{ $id }}"
         name="{{ $name }}"
         class="select__control"
-        aria-hidden="true"
         tabindex="-1"
         x-model="selected"
+        x-effect="$el.value = selected; $el.dispatchEvent(new Event('change'))"
     >
         <option x-bind:selected="selected === null ? 'selected' : null"></option>
 
@@ -16,7 +16,7 @@
             <option
                 :value="option.value"
                 x-bind:selected="isSelected(option.value) ? 'selected' : null"
-                x-text="option.label"
+                x-html="option.label"
             ></option>
         </template>
     </select>
@@ -33,11 +33,11 @@
             x-bind:aria-expanded="open"
             id="{{ $id }}-button"
             type="button"
-            class="button button--primary button--small select__input"
+            @class(['button button--small select__input', 'button--primary' => $appearance === 'primary', 'select__input--outline' => $appearance === 'outline'])
             aria-haspopup="listbox"
             aria-controls="{{ $id }}-menu-list"
         >
-            <span x-text="selectedOption ? selectedOption.label : '{{ $placeholder }}'" class="grow truncate"></span>
+            <span x-html="selectedOption ? selectedOption.label : '{{ $placeholder }}'" class="grow truncate flex"></span>
 
             <x-heroicon-o-chevron-down />
         </button>
@@ -60,18 +60,17 @@
         aria-labelledby="{{ $id }}-button"
         aria-orientation="vertical"
         role="listbox"
-        tabindex="0"
     >
         <template x-for="option in options" :key="option.value">
             <li
                 x-on:click="setSelected(option); $dispatch('change', option.value)"
+                x-on:keydown.enter="setSelected(option); $dispatch('change', option.value)"
                 :aria-selected="isSelected(option.value)"
-                :title="option.label"
                 class="button button--small menu__item select__option"
                 role="option"
                 tabindex="0"
             >
-                <div class="grow truncate" x-text="option.label"></div>
+                <div class="grow truncate flex" x-html="option.label"></div>
 
                 <x-heroicon-o-check-circle x-show="isSelected(option.value)" />
             </li>

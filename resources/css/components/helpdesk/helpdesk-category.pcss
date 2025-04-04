@@ -1,0 +1,19 @@
+.helpdesk-category {
+    @apply card p-6 overflow-hidden shadow-card;
+
+    .helpdesk-category__title {
+        @apply headline-xs;
+    }
+
+    .helpdesk-category__subtitle {
+        @apply text-sm font-normal;
+    }
+
+    .helpdesk-category__accordion {
+        @apply w-full flex items-center justify-between gap-3 text-start focus-visible:outline-offset-4 rounded;
+    }
+
+    .helpdesk-category__content {
+        @apply flex flex-col gap-4 pt-4;
+    }
+}

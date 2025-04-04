@@ -1,6 +1,10 @@
 .card {
     @apply bg-surface text-on-surface-emphasis rounded-lg border border-outline-alternative;
 
+    &.card--secondary {
+        @apply bg-surface-light hover:bg-surface-active hover:border-outline-reversed hover:shadow-card;
+    }
+
     &.card--transparent {
         @apply bg-transparent;
     }

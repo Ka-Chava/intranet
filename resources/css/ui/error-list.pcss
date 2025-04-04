@@ -1,0 +1,15 @@
+.error-list {
+    @apply px-3 py-2 rounded border border-negative text-negative list-disc list-inside;
+
+    .error-list__label {
+        @apply text-xs pb-2;
+    }
+
+    .error-list__item {
+        @apply text-sm px-2;
+
+        & + .error-list__item {
+            @apply pt-1;
+        }
+    }
+}

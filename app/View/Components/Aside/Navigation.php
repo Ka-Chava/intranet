@@ -19,7 +19,7 @@ class Navigation extends Component
             ['url' =>'dashboard', 'title' => 'Dashboard', 'icon' => 'grid'],
             ['url' =>'handbook', 'title' => 'Handbook', 'icon' => 'file'],
             ['url' =>'https://www.adp.com', 'title' => 'Company News', 'icon' => 'apartment'],
-            ['url' =>'https://www.adp.com', 'title' => 'Help Desk', 'icon' => 'laptop'],
+            ['url' =>'helpdesk', 'title' => 'Help Desk', 'icon' => 'laptop'],
             ['url' =>'https://www.adp.com', 'title' => 'I.T. News', 'icon' => 'database'],
             ['url' =>'https://www.adp.com', 'title' => 'ADP', 'icon' => 'adp'],
             ['url' =>'http://kachava.dash.app', 'title' => '401k', 'icon' => 'wallet'],
