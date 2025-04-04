@@ -18,10 +18,7 @@
             @foreach($category->requests as $request)
                 <x-helpdesk.request-card
                     :$request
-                    @click="
-                        $dispatch('open-modal', { modal: 'create-helpdesk-request' });
-                        setTimeout(() => Livewire.dispatch('setup-request-form', { requestTypeId: {{ $request->id }} }), 0);
-                    "
+                    @click="Livewire.dispatch('setup-request-form', { request: {{ json_encode($request) }} })"
                 />
             @endforeach
         </div>

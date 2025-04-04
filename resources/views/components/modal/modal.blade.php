@@ -1,6 +1,7 @@
 <div
     id="{{ $id }}"
     x-data="{ open: false, visible: false, toggle() { setTimeout(() => this.visible = this.open, 200) } }"
+    x-effect="!open && $dispatch('modal-closed-{{ $id }}');"
     @keydown.esc.prevent.stop="open = false; toggle();"
     @open-modal.window="open = $event.detail.modal === '{{ $id }}'; visible = open;"
     @close-modal.window="open = $event.detail.modal === '{{ $id }}' ? false : open; toggle();"

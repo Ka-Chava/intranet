@@ -3,7 +3,6 @@
 namespace App\Livewire\Forms;
 
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -13,7 +12,8 @@ class HelpdeskRequestForm extends Component
     use WithFileUploads;
 
     public $submitted;
-    public $requestTypeId;
+    public $request;
+
     #[Validate('required', message: 'Requester is a required field')]
     public $requester;
     #[Validate('required', message: 'Summary is a required field')]
@@ -23,16 +23,24 @@ class HelpdeskRequestForm extends Component
     #[Validate('max:25600')] # 25MB
     public $attachment;
 
-    #[On('setup-request-form')]
-    public function setRequestTypeId($requestTypeId)
-    {
-        $this->requestTypeId = $requestTypeId;
-    }
-
     public function submit()
     {
         $this->validate();
         $this->submitted = true;
+    }
+
+    public function clear()
+    {
+        $this->submitted = false;
+        $this->requester = Auth::user()->id;
+        $this->summary = null;
+        $this->description = null;
+        $this->attachment = null;
+    }
+
+    public function setRequest($request)
+    {
+        $this->request = $request;
     }
 
     public function boot()

@@ -13,7 +13,5 @@
 
     <x-helpdesk.category-list />
 
-    <x-modal id="create-helpdesk-request">
-        <livewire:forms.helpdesk-request-form />
-    </x-modal>
+    <livewire:forms.helpdesk-request-form />
 </x-app-layout>

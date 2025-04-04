@@ -80,7 +80,7 @@ export default class RichTextEditor {
                     placeholder,
                 }),
             ],
-            content: this.content,
+            content: null,
             onUpdate: ({ editor }) => {
                 this.livewire.set(this.model, editor.getHTML());
             },
