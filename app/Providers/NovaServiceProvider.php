@@ -2,11 +2,18 @@
 
 namespace App\Providers;
 
+use App\Nova\Author;
+use App\Nova\Blog;
+use App\Nova\BlogPost;
 use App\Nova\Holiday;
 use App\Nova\User;
 use App\Nova\Announcement;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Fortify\Features;
+use Laravel\Nova\Menu\Menu;
+use Laravel\Nova\Menu\MenuItem;
+use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
@@ -19,7 +26,16 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         parent::boot();
 
-        //
+        Nova::mainMenu(function (Request $request, Menu $menu) {
+            $menu->append([
+                MenuSection::make('Blogs', [
+                    MenuItem::resource(Blog::class)->canSee(fn () => true),
+                    MenuItem::resource(BlogPost::class)->canSee(fn () => true),
+                    MenuItem::resource(Author::class)->canSee(fn () => true),
+                ])->icon('document-duplicate')->collapsable(),
+            ]);
+            return $menu;
+        });
     }
 
     /**
@@ -101,7 +117,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         Nova::resources([
             User::class,
             Announcement::class,
-            Holiday::class
+            Holiday::class,
         ]);
     }
 }
