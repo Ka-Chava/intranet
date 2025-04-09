@@ -1,0 +1,66 @@
+
+.rte {
+    h1, h2, h3, h4, h5, h6 {
+        @apply mt-6;
+    }
+
+    p {
+        @apply text-on-surface-default;
+    }
+
+    blockquote {
+        @apply italic;
+    }
+
+    ol, ul {
+        @apply block ps-4;
+    }
+
+    :is(ul, ol) p {
+        @apply inline;
+    }
+
+    ol {
+        @apply list-decimal;
+    }
+
+    ul {
+        @apply list-disc;
+    }
+
+    :is(ol, ul) ul {
+        @apply list-circle;
+    }
+
+    :is(ol, ul) :is(ol, ul) ul {
+        @apply list-square;
+    }
+
+    :is(ol, ul) ol {
+        @apply list-alpha;
+    }
+
+    :is(ol, ul) :is(ol, ul) ol {
+        @apply list-roman;
+    }
+
+    li {
+        @apply list-inside;
+    }
+
+    li :is(ol, ul) {
+        @apply list-outside;
+    }
+
+    :is(ol, ul) :is(ol, ul, li) {
+        list-style-position: unset;
+    }
+
+    code, kbd, samp {
+        @apply rounded px-1;
+    }
+
+    a {
+        @apply text-link underline hover:no-underline;
+    }
+}

@@ -20,7 +20,10 @@ export default {
         },
         extend: {
             listStyleType: {
-              roman: 'lower-roman',
+                roman: 'lower-roman',
+                alpha: 'lower-alpha',
+                circle: 'circle',
+                square: 'square',
             },
             fontSize: {
                 'page-header': ['24px', '32px'],

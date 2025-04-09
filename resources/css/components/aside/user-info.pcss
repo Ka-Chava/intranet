@@ -1,5 +1,5 @@
 .user-info {
-    @apply flex items-center justify-between pl-6;
+    @apply flex items-center justify-between;
 
     .user-info__wrapper {
         @apply flex items-center gap-x-3;
@@ -7,6 +7,10 @@
 
     .user-info__avatar {
         @apply flex items-center justify-center relative rounded-full border border-web-border-light w-10 h-10;
+
+        &.user-info__avatar--large {
+            @apply w-[60px] h-[60px];
+        }
     }
 
     .user-info__avatar-image {
@@ -14,6 +18,14 @@
     }
 
     .user-info__details {
+        @apply flex flex-col gap-1;
+    }
+
+    .user-info__name {
         @apply font-bold whitespace-nowrap;
+    }
+
+    .user-info__tagline {
+        @apply text-on-surface-default;
     }
 }

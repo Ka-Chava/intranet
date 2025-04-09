@@ -2,7 +2,7 @@
     <div {{ $attributes->only('class')->merge(['class' => 'card post-card group/card'.($size === 'small' ? ' post-card--small' : '')]) }} {{$attributes}}>
         <div class="post-card__content group-hover/card:after:opacity-0">
             @if(isset($post->image))
-                <img src="{{ $post->image }}" alt="" class="post-card__image group-hover/card:scale-105" />
+                <img src="{{ $post->image }}" alt="{{ $post->title }}" class="post-card__image group-hover/card:scale-105" />
             @endif
         </div>
 
@@ -18,6 +18,8 @@
             @endif
         </div>
 
-        <a href="{{ $post->url }}" class="post-card__link" aria-label="{{ $post->title }}" wire:navigate></a>
+        <a href="/my/blog/{{ $post->slug }}" class="post-card__link" wire:navigate>
+            <span class="sr-only">{{ $post->title }}</span>
+        </a>
     </div>
 @endif
