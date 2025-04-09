@@ -18,7 +18,7 @@
     <body class="font-sans antialiased w-full">
         <x-header.header />
 
-        <div class="min-h-screen section pt-5 !px-0" id="WrapperContent">
+        <div class="min-h-screen section !px-0" id="WrapperContent">
             <main class="w-full container max-w-full mx-auto px-0 min-w-0" id="MainContent">
                 {{ $slot }}
             </main>

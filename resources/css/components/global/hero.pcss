@@ -14,11 +14,11 @@
     }
 
     .hero__media {
-        @apply relative w-full aspect-[216/155] overflow-hidden rounded-lg;
+        @apply relative w-full h-full aspect-[216/155] overflow-hidden;
         @apply after:absolute after:indent-0 after:w-full after:h-full after:rounded-lg after:transition-opacity after:duration-primary after:ease-primary after:bg-gradient-to-b after:from-transparent after:via-black/10 after:to-transparent dark:after:via-white/10;
     }
 
     .hero__image {
-        @apply absolute inset-0 w-full h-full;
+        @apply absolute inset-0 w-full h-full object-cover;
     }
 }

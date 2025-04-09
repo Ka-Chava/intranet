@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Traits\HasUser;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Tags\HasTags;
 
 class BlogPost extends Model
@@ -13,7 +15,7 @@ class BlogPost extends Model
     use HasUser;
 
     protected $fillable = [
-      'published_at'
+        'published_at',
     ];
 
     protected $casts = [
@@ -44,5 +46,12 @@ class BlogPost extends Model
     public function isPublished(): bool
     {
         return !is_null($this->published_at);
+    }
+
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value ? Storage::disk('public')->url($value) : null,
+        );
     }
 }

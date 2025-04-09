@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Traits\HasUser;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Tags\HasTags;
 
 class Blog extends Model
@@ -26,5 +28,12 @@ class Blog extends Model
     public function articlesAll(): HasMany
     {
         return $this->hasMany(BlogPost::class);
+    }
+
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value ? Storage::disk('public')->url($value) : null,
+        );
     }
 }

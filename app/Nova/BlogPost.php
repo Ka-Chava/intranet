@@ -100,6 +100,7 @@ class BlogPost extends Resource
                 ->showOnDetail(),
 
             Image::make('Image')
+                ->disk('public')
                 ->hideFromIndex()
                 ->nullable()
                 ->prunable(),
