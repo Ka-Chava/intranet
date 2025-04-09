@@ -5,17 +5,19 @@
 @import url('ui/ui.pcss');
 
 @import url('tailwindcss/components.css');
+@import url('components/global/global.pcss');
 @import url('components/header-pill.css');
 @import url('components/drawer.pcss');
 @import url('components/header/header.pcss');
 @import url('components/aside/aside.pcss');
-@import url('components/global/page-header.pcss');
 @import url('components/calendar.pcss');
 @import url('components/holiday-list.pcss');
 @import url('components/holiday-card.pcss');
 
 @import url('components/dashboard/dashboard.pcss');
 @import url('components/handbook/handbook.pcss');
+@import url('components/blog/blog.pcss');
+@import url('components/rte/rte.pcss');
 
 @import url('store/employee-store.pcss');
 

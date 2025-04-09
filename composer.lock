@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b727cd540c3d49abc00539154c930aa",
+    "content-hash": "86523fb0cd3a1452d2a0fcc63f4c42df",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3167,6 +3167,55 @@
                 "source": "https://github.com/livewire/volt"
             },
             "time": "2025-03-05T15:20:55+00:00"
+        },
+        {
+            "name": "marshmallow/nova-tiptap",
+            "version": "5.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marshmallow-packages/nova-tiptap.git",
+                "reference": "4a5e4952669a958b6187f079b94b47cfc4556677"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marshmallow-packages/nova-tiptap/zipball/4a5e4952669a958b6187f079b94b47cfc4556677",
+                "reference": "4a5e4952669a958b6187f079b94b47cfc4556677",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "^4.0|^5.0",
+                "php": "^8.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Marshmallow\\Tiptap\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Marshmallow\\Tiptap\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tiptap editor field.",
+            "keywords": [
+                "editor",
+                "laravel",
+                "nova",
+                "tiptap",
+                "vue"
+            ],
+            "support": {
+                "issues": "https://github.com/marshmallow-packages/nova-tiptap/issues",
+                "source": "https://github.com/marshmallow-packages/nova-tiptap/tree/5.1.0"
+            },
+            "time": "2025-02-18T19:52:35+00:00"
         },
         {
             "name": "mashape/unirest-php",

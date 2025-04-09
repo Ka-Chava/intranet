@@ -9,9 +9,9 @@ use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\ActionRequest;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Marshmallow\Tiptap\Tiptap;
 use Spatie\TagsField\Tags;
 
 class BlogPost extends Resource
@@ -71,9 +71,33 @@ class BlogPost extends Resource
             Textarea::make('Description')
                 ->alwaysShow(),
 
-            Trix::make('Content')
-                ->showOnDetail()
-                ->withFiles('public'),
+            Tiptap::make('Content')
+                ->buttons([
+                    'heading',
+                    'italic',
+                    'bold',
+                    'link',
+                    'code',
+                    'strike',
+                    'underline',
+                    'highlight',
+                    'bulletList',
+                    'orderedList',
+                    'br',
+                    'codeBlock',
+                    'blockquote',
+                    'horizontalRule',
+                    'hardBreak',
+                    'table',
+                    'image',
+                    'textAlign',
+                    'history',
+                ])
+                ->linkSettings([
+                    'withFileUpload' => false,
+                ])
+                ->syntaxHighlighting()
+                ->showOnDetail(),
 
             Image::make('Image')
                 ->hideFromIndex()

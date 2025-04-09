@@ -20,6 +20,11 @@ class Blog extends Model
 
     public function articles(): HasMany
     {
+        return $this->hasMany(BlogPost::class)->whereNotNull('published_at');
+    }
+
+    public function articlesAll(): HasMany
+    {
         return $this->hasMany(BlogPost::class);
     }
 }

@@ -1,0 +1,36 @@
+.blog-post-content {
+    @apply my-20 px-2.5;
+
+    .blog-post-content__container {
+        @apply max-w-[962px] mx-auto flex flex-col gap-6;
+
+        * {
+            @apply !font-light;
+        }
+
+        h2 {
+            @apply text-headline-lg;
+        }
+
+        p {
+            @apply text-xl;
+        }
+
+        & > p {
+            &:first-child {
+                @apply max-w-[862px] headline-md;
+            }
+
+            @apply max-w-[720px] mx-auto;
+        }
+
+        blockquote {
+            @apply my-12;
+        }
+
+        blockquote,
+        blockquote p {
+            @apply text-[42px] leading-[50px];
+        }
+    }
+}
