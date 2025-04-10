@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Bookmarkable;
 use App\Traits\HasUser;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
@@ -11,8 +12,7 @@ use Spatie\Tags\HasTags;
 
 class BlogPost extends Model
 {
-    use HasTags;
-    use HasUser;
+    use HasTags, HasUser, Bookmarkable;
 
     protected $fillable = [
         'published_at',
