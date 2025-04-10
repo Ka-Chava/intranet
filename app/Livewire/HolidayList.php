@@ -32,7 +32,8 @@ class HolidayList extends Component
         $endOfRange = $startOfDay->copy()->addDays($this->holidaysRange);
 
         try {
-            $holidays = Holiday::where('date', '<=', $endOfRange)
+            $holidays = Holiday::where('date', '>=', $startOfDay)
+                ->where('date', '<=', $endOfRange)
                 ->whereNotIn('id', $this->dismissedHolidays)
                 ->orderBy('date', 'asc')
                 ->get();

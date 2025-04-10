@@ -35,9 +35,7 @@
         @foreach($sections as $section)
             <div class="handbook-drawer__section" id="@handleize($section->title)">
                 <div class="handbook-drawer__headline">
-                    <h2>
-                        {{ $section->title }}
-                    </h2>
+                    <h2>{{ $section->title }}</h2>
 
                     <div class="handbook-drawer__actions">
                         <button class="button button--primary button--small">
@@ -50,16 +48,20 @@
                     </div>
                 </div>
 
-                <p>
-                    {{ $section->description }}
-                </p>
+                <p>{{ $section->description }}</p>
 
                 @if(!empty($section->posts))
                     <div class="handbook-drawer__group">
                         @foreach($section->posts as $post)
-                            <div class="handbook-drawer__block" id="@handleize($section->title . $post->title)">
-                                <h3>
-                                    {{ $loop->parent->iteration }}.{{ $loop->iteration }} {{ $post->title }}
+                            <div class="handbook-drawer__block group/block" id="@handleize($section->title . $post->title)">
+                                <h3 class="handbook-drawer__block-title">
+                                    <span>
+                                        {{ $loop->parent->iteration }}.{{ $loop->iteration }} {{ $post->title }}
+                                    </span>
+
+                                    <button class="button handbook-drawer__block-button group-hover/block:opacity-100">
+                                        <x-heroicon-o-bookmark />
+                                    </button>
                                 </h3>
 
                                 <p>
