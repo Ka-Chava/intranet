@@ -22,12 +22,12 @@ class Blog extends Model
 
     public function articles(): HasMany
     {
-        return $this->hasMany(BlogPost::class)->whereNotNull('published_at');
+        return $this->hasMany(BlogPost::class);
     }
 
-    public function articlesAll(): HasMany
+    public function articlesPublished(): HasMany
     {
-        return $this->hasMany(BlogPost::class);
+        return $this->hasMany(BlogPost::class)->whereNotNull('published_at');
     }
 
     protected function image(): Attribute

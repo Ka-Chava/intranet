@@ -50,23 +50,32 @@
 
                 <p>{{ $section->description }}</p>
 
-                @if(!empty($section->posts))
+                @if(!empty($section->articles))
                     <div class="handbook-drawer__group">
-                        @foreach($section->posts as $post)
-                            <div class="handbook-drawer__block group/block" id="@handleize($section->title . $post->title)">
+                        @foreach($section->articles as $article)
+                            <div
+                                class="handbook-drawer__block group/block"
+                                id="{{ $article->slug }}"
+                            >
                                 <h3 class="handbook-drawer__block-title">
                                     <span>
-                                        {{ $loop->parent->iteration }}.{{ $loop->iteration }} {{ $post->title }}
+                                        {{ $loop->parent->iteration }}.{{ $loop->iteration }} {{ $article->title }}
                                     </span>
 
-                                    <button class="button handbook-drawer__block-button group-hover/block:opacity-100">
-                                        <x-heroicon-o-bookmark />
-                                    </button>
+                                    <livewire:bookmark-button
+                                        :bookmarkable="$article"
+                                        :bookmarked="isset($article->currentBookmark->id)"
+                                        class="handbook-drawer__block-button group-hover/block:opacity-100"
+                                    />
                                 </h3>
 
-                                <p>
-                                    {{ $post->content }}
-                                </p>
+                                <div>
+                                    @if($article->description)
+                                        {{ $article->description }}
+                                    @else
+                                        {!! $article->content !!}
+                                    @endif
+                                </div>
                             </div>
                         @endforeach
                     </div>

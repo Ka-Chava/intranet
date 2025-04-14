@@ -43,6 +43,13 @@ trait Bookmarkable
         }
     }
 
+    protected function currentBookmark(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->bookmarked ? $this->bookmarks()->where('user_id', Auth::user()->id)->first() : null,
+        );
+    }
+
     protected function bookmarked(): Attribute
     {
         return Attribute::make(
