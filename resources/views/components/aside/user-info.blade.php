@@ -2,7 +2,7 @@
     $user = Auth::user();
 ?>
 
-<div class="user-info">
+<div class="user-info pl-6">
     <div class="user-info__wrapper">
         <div class="user-info__avatar">
             @if($user->avatar)
@@ -13,7 +13,9 @@
         </div>
 
         <div class="user-info__details">
-            {{ $user->name }}
+            <div class="user-info__name">
+                {{ $user->name }}
+            </div>
         </div>
     </div>
 </div>
