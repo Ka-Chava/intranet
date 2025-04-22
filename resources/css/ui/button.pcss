@@ -12,14 +12,26 @@
 
     &.button--primary {
         @apply bg-btn-primary hover:bg-btn-primary-hover active:bg-btn-primary-active;
+
+        &.active {
+            @apply bg-btn-primary-active;
+        }
     }
 
     &.button--secondary {
         @apply bg-btn-secondary border border-btn-outline text-btn-secondary-text hover:bg-btn-secondary-hover active:bg-btn-secondary-active;
+
+        &.active {
+            @apply bg-btn-secondary-active;
+        }
     }
 
     &.button--tertiary {
         @apply bg-btn-tertiary text-btn-tertiary-text hover:bg-btn-tertiary-hover active:bg-btn-tertiary-active;
+
+        &.active {
+            @apply bg-btn-tertiary-active;
+        }
     }
 
     &.button--special {
