@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Contracts\IBookmarkable;
+use App\Traits\Bookmarkable;
 use App\Traits\HasUser;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
@@ -9,10 +11,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Tags\HasTags;
 
-class BlogPost extends Model
+class BlogPost extends Model implements IBookmarkable
 {
-    use HasTags;
-    use HasUser;
+    use HasTags, HasUser, Bookmarkable;
 
     protected $fillable = [
         'published_at',

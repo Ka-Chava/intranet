@@ -9,7 +9,7 @@
                 {{ $section->description }}
             </p>
 
-            @if(!empty($section->posts))
+            @if(!empty($section->articles))
                 <div :key="@handleize($section->title)" class="handbook-sections__group" x-data="new HandbookSection()">
                     <div
                         class="handbook-sections__grid-wrapper"
@@ -17,25 +17,20 @@
                         x-bind:style="showExpand && (!expanded ? 'height: 300px' : 'height:' + height + 'px')"
                     >
                         <ol class="handbook-grid" x-ref="content">
-                            @foreach($section->posts as $post)
-                                <li
-                                    tabindex="0"
-                                    title="{{ $post->title }}"
-                                    class="card card--clickable button handbook-card"
-                                    @click="$dispatch('open-handbook-drawer', { target: '@handleize($section->title . $post->title)' })"
-                                    @keypress.enter="$dispatch('open-handbook-drawer', { target: '@handleize($section->title . $post->title)' })"
-                                >
-                                    <div class="handbook-card__content">
-                                        <h3 class="handbook-card__title">
-                                            {{ $loop->parent->iteration }}.{{ $loop->iteration }} {{ $post->title }}
-                                        </h3>
-
-                                        <p class="handbook-card__preview">
-                                            {{ $post->content }}
-                                        </p>
-                                    </div>
-
-                                    <x-icon-log-out-right class="handbook-card__icon" />
+                            @foreach($section->articles as $article)
+                                <li>
+                                    <x-handbook.card
+                                        :key="$article->id"
+                                        :bookmarkable="$article"
+                                        :bookmarked="isset($article->currentBookmark->id)"
+                                        :title="$article->title"
+                                        @click="$dispatch('open-handbook-drawer', { target: '{{ $article->slug }}' })"
+                                        @keypress.enter="$dispatch('open-handbook-drawer', { target: '{{ $article->slug }}' })"
+                                    >
+                                        <x-slot:heading>
+                                            {{ $loop->parent->iteration }}.{{ $loop->iteration }} {{ $article->title }}
+                                        </x-slot:heading>
+                                    </x-handbook.card>
                                 </li>
                             @endforeach
                         </ol>

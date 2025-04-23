@@ -2,6 +2,7 @@
     @apply fixed z-10 flex w-[540px] flex-col will-change-transform end-0 bg-off-canvas text-off-canvas-text flowing-all translate-x-full;
     top: var(--ui-header-height, 0);
     height: calc(100dvh - var(--ui-header-height, 0));
+    transition-duration: 250ms;
 
     &.active {
         @apply translate-x-0;
@@ -20,7 +21,7 @@
 
         &::before,
         &::after {
-            @apply content-[''] fixed left-1/2 block h-5 -translate-x-1/2;
+            @apply content-[''] z-10 fixed left-1/2 block h-5 -translate-x-1/2;
             width: calc(100% - 30px);
         }
 

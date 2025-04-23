@@ -32,4 +32,16 @@
     .handbook-drawer__block {
         @apply flex flex-col gap-2.5;
     }
+
+    .handbook-drawer__block-title {
+        @apply flex items-center gap-2;
+    }
+
+    .handbook-drawer__block-button {
+        @apply p-0 opacity-0 flowing-all;
+
+        &.active {
+            @apply opacity-100;
+        }
+    }
 }

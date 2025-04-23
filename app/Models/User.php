@@ -57,4 +57,9 @@ class User extends Authenticatable
             return app('shopify.repository')->getCustomer();
         });
     }
+
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
 }

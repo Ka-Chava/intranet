@@ -51,6 +51,7 @@ html, body {
 
 #HandbookDrawer.active + .side-nav {
     @apply w-[540px] -mr-5 opacity-0 delay-[55ms];
+    transition-duration: 250ms;
 }
 
 a,

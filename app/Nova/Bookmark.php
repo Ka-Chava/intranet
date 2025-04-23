@@ -3,74 +3,68 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Auth\PasswordValidationRules;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Password;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class User extends Resource
+class Bookmark extends Resource
 {
-    use PasswordValidationRules;
-
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\User>
+     * @var class-string<\App\Models\Bookmark>
      */
-    public static $model = \App\Models\User::class;
+    public static $model = \App\Models\Bookmark::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
+
+    /**
+     * Indicates if the resource should be displayed in the sidebar.
+     *
+     * @var bool
+     */
+    public static $displayInNavigation = false;
+
+    /**
+     * Indicates if the resource should be globally searchable.
+     *
+     * @var bool
+     */
+    public static $globallySearchable = false;
 
     /**
      * The columns that should be searched.
      *
      * @var array
      */
-    public static $search = [
-        'id', 'name', 'email',
-    ];
+    public static $search = [];
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @return array<int, \Laravel\Nova\Fields\Field|\Laravel\Nova\Panel|\Laravel\Nova\ResourceTool|\Illuminate\Http\Resources\MergeValue>
+     * @return array<int, \Laravel\Nova\Fields\Field>
      */
     public function fields(NovaRequest $request): array
     {
         return [
             ID::make()->sortable(),
 
-            Gravatar::make()->maxWidth(50),
+            BelongsTo::make('User', 'user', User::class)->sortable(),
 
-            Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
-
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules($this->passwordRules())
-                ->updateRules($this->optionalPasswordRules()),
-
-            HasMany::make('Bookmarks', 'bookmarks', Bookmark::class),
+            MorphTo::make('Bookmarkable')->types([
+                BlogPost::class,
+            ]),
         ];
     }
 
     /**
-     * Get the cards available for the request.
+     * Get the cards available for the resource.
      *
      * @return array<int, \Laravel\Nova\Card>
      */

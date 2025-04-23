@@ -1,9 +1,13 @@
 .handbook-card {
-    @apply max-w-full p-6 shadow-card;
+    @apply max-w-full p-6 shadow-card focusable focus-visible:-outline-offset-2;
 
     .handbook-card__content {
         @apply flex flex-col gap-2;
         max-width: calc(100% - 32px);
+    }
+
+    .handbook-card__header {
+        @apply flex gap-2 items-center;
     }
 
     .handbook-card__title {
