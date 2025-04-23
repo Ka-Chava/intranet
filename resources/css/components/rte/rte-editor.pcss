@@ -1,17 +1,16 @@
-@import url('rte-editor.pcss');
-@import url('rte-toolbar.pcss');
+.rte-editor {
+    @apply px-3 py-2 rounded bg-surface-active focusable border border-outline-alternative placeholder:text-placeholder flowing-colors hover:border-outline-reversed focus-within:outline focus-within:outline-offset-2 focus-within:outline-2 focus-within:outline-btn-outline;
 
-.rte {
-    h1, h2, h3, h4, h5, h6 {
-        @apply mt-6;
+    .rte-editor__container {
+        @apply flex flex-col gap-2.5;
     }
+}
 
-    p {
-        @apply text-on-surface-default;
-    }
+.editor {
+    @apply min-h-[105px] max-h-[200px] overflow-y-auto cursor-text focus:outline-0 focus:border-0 scrollable;
 
-    blockquote {
-        @apply italic;
+    p.is-editor-empty:first-child {
+        @apply before:content-[attr(data-placeholder)] before:h-0 before:pointer-events-none before:text-placeholder before:float-left;
     }
 
     ol, ul {
@@ -59,7 +58,7 @@
     }
 
     code, kbd, samp {
-        @apply rounded px-1;
+        @apply bg-toolbar rounded px-1;
     }
 
     a {

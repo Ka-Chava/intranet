@@ -6,9 +6,13 @@ Route::view('/styleguide', 'styleguide')
     ->middleware(['auth', 'verified'])
     ->name('styleguide');
 
-Route::view('/handbook', 'handbook')
+Route::view('/my/handbook', 'handbook')
     ->middleware(['auth', 'verified'])
     ->name('handbook');
+
+Route::view('/my/helpdesk', 'helpdesk')
+    ->middleware(['auth', 'verified'])
+    ->name('helpdesk');
 
 Route::view('/my/profile', 'profile')
     ->middleware(['auth'])

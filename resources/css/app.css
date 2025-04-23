@@ -16,6 +16,7 @@
 
 @import url('components/dashboard/dashboard.pcss');
 @import url('components/handbook/handbook.pcss');
+@import url('components/helpdesk/helpdesk.pcss');
 @import url('components/blog/blog.pcss');
 @import url('components/rte/rte.pcss');
 
@@ -23,9 +24,17 @@
 
 @import url('tailwindcss/utilities.css');
 
+html {
+    scrollbar-gutter: stable;
+}
+
 html, body {
     font-family: Figtree, ui-sans-serif, system-ui, sans-serif;
     @apply text-on-surface-emphasis bg-canvas overscroll-none;
+}
+
+[x-cloak] {
+    display: none !important;
 }
 
 .section {
@@ -48,4 +57,8 @@ html, body {
 a,
 button {
     @apply focusable;
+}
+
+.avatar {
+    @apply w-6 h-6 border border-outline-reversed rounded-full object-cover;
 }

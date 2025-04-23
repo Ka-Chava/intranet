@@ -9,6 +9,7 @@ export default {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './resources/js/**/*.js',
     ],
 
     theme: {
@@ -51,6 +52,9 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            boxShadow: {
+                card: '0 2px 6px 0 rgba(22, 22, 22, 0.20)',
+            },
             colors: {
                 'web-border': '#262626',
                 'web-border-light': '#E5E5E5',
@@ -59,6 +63,8 @@ export default {
                 /* Surface colors */
                 canvas: 'var(--ui-color-canvas)',
                 surface: 'var(--ui-color-surface)',
+                'surface-light': 'var(--ui-color-surface-light)',
+                'surface-active': 'var(--ui-color-surface-active)',
                 footer: 'var(--ui-color-footer)',
                 scrim: 'var(--ui-color-scrim)',
 
@@ -76,6 +82,7 @@ export default {
 
                 /* Borders colors */
                 outline: 'var(--ui-color-outline-default)',
+                'outline-reversed': 'var(--ui-color-outline-reversed)',
                 'outline-selected': 'var(--ui-color-outline-selected)',
                 'outline-alternative': 'var(--ui-color-outline-alternative)',
 
@@ -114,6 +121,11 @@ export default {
 
                 'off-canvas': 'var(--ui-off-canvas-color)',
                 'off-canvas-text': 'var(--ui-off-canvas-text-color)',
+
+                'placeholder': 'var(--ui-input-placeholder)',
+
+                'toolbar': 'var(--ui-toolbar)',
+                'toolbar-divider': 'var(--ui-toolbar-divider)',
             },
             backgroundImage: {
                 before: 'linear-gradient(96deg, #FBD7FF 0%, #FFDEC1 100%)',
