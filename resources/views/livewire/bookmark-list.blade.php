@@ -28,11 +28,11 @@
         @endif
 
         @foreach(range(1, max(4 - count($bookmarks), 1)) as $index)
-            <button type="button" class="card card--transparent card--clickable bookmark-card-empty">
+            <div class="card card--transparent bookmark-card-empty">
                 Add a bookmark
 
                 <x-icon-plus-square class="bookmark-card-empty__icon" />
-            </button>
+            </div>
         @endforeach
     </div>
 </div>

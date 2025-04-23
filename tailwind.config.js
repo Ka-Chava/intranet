@@ -127,10 +127,6 @@ export default {
                 'toolbar': 'var(--ui-toolbar)',
                 'toolbar-divider': 'var(--ui-toolbar-divider)',
             },
-            backgroundImage: {
-                before: 'linear-gradient(96deg, #FBD7FF 0%, #FFDEC1 100%)',
-                after: 'linear-gradient(96deg, #845BDC -30%, #FFDEC1 100%)',
-            },
             transitionDuration: {
                 primary: 'var(--ui-primary-transition-duration)',
             },
