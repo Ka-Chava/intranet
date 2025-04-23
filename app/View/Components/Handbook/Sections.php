@@ -21,27 +21,12 @@ class Sections extends Component
      */
     public function render(): View|Closure|string
     {
-        $tags = collect(['Introductory Statement', 'Employment', 'Employment Status and Records']);
+        $titles = collect(['Introductory Statement', 'Employment', 'Employment Status and Records']);
+        $blogs = \App\Models\Blog::query()->withAnyTags(['handbook'])->get();
 
-        $articles = \App\Models\BlogPost::query()
-            ->whereHas('blog', function ($query) {
-                $query->where('slug', 'handbook');
-            })
-            ->withAnyTags($tags)
-            ->get();
-
-        $sections = $tags->mapWithKeys(function ($tag) use ($articles) {
-            $matchedPosts = $articles->filter(function ($article) use ($tag) {
-                return $article->tags->contains('name', $tag);
-            });
-
-            return [
-                $tag => (object) [
-                    'title' => $tag,
-                    'description' => 'Lorem ipsum dolor sit amet elit sed do eiusmod',
-                    'articles' => $matchedPosts
-                ]
-            ];
+        $sections = $blogs->sortBy(function ($blog) use ($titles) {
+            $index = $titles->search($blog->title);
+            return $index !== false ? $index : PHP_INT_MAX;
         });
 
         return view('components.handbook.sections', [
