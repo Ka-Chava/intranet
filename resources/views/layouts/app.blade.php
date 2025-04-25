@@ -54,6 +54,8 @@
             </x-aside.side-nav>
         </div>
 
+        <x-footer.page-footer />
+
         <livewire:scripts />
     </body>
 </html>
