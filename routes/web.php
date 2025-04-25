@@ -30,10 +30,22 @@ Route::get('/my', [\App\Http\Controllers\DashboardController::class, 'show'])
     ->name('dashboard');
 
 Route::get('/my/blog/{slug}', function (string $slug) {
-   return view('article', [
-       'article' => \App\Models\BlogPost::where('slug', $slug)->first()
+   return view('blog', [
+       'blog' => \App\Models\Blog::where('slug', $slug)->firstOrFail()
    ]);
-});
+})->middleware(['auth', 'verified'])
+    ->name('blog.show');
+
+Route::get('/my/blog/{blogSlug}/{slug}', function (string $blogSlug, string $slug) {
+    return view('article', [
+        'article' => \App\Models\BlogPost::where('slug', $slug)
+            ->whereHas('blog', function ($query) use ($blogSlug) {
+                $query->where('slug', $blogSlug);
+            })
+            ->firstOrFail()
+    ]);
+})->middleware(['auth', 'verified'])
+    ->name('article.show');
 
 require __DIR__.'/store.php';
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Dashboard;
+namespace App\View\Components\Global;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -25,6 +25,6 @@ class PostCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.dashboard.post-card');
+        return view('components.global.post-card');
     }
 }

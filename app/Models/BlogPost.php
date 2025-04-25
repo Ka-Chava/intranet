@@ -55,4 +55,11 @@ class BlogPost extends Model implements IBookmarkable
             get: fn ($value) => $value ? Storage::disk('public')->url($value) : null,
         );
     }
+
+    protected function url(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->blog ? url("/my/blog/{$this->blog->slug}/{$this->slug}") : null,
+        );
+    }
 }
