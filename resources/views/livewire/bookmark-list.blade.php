@@ -9,7 +9,7 @@
         </p>
     </div>
 
-    <div class="handbook-grid">
+    <div class="cards-grid">
         @if(!empty($bookmarks))
             @foreach($bookmarks as $bookmark)
                 <x-handbook.card

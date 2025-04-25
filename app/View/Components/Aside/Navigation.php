@@ -18,9 +18,9 @@ class Navigation extends Component
         $this->links = $links ?: [
             ['url' =>'dashboard', 'title' => 'Dashboard', 'icon' => 'grid'],
             ['url' =>'handbook', 'title' => 'Handbook', 'icon' => 'file'],
-            ['url' =>'https://www.adp.com', 'title' => 'Company News', 'icon' => 'apartment'],
+            ['url' =>'blog.show', 'title' => 'Company News', 'icon' => 'apartment', 'parameters' => ['slug' => 'company-news']],
             ['url' =>'helpdesk', 'title' => 'Help Desk', 'icon' => 'laptop'],
-            ['url' =>'https://www.adp.com', 'title' => 'I.T. News', 'icon' => 'database'],
+            ['url' =>'blog.show', 'title' => 'I.T. News', 'icon' => 'database', 'parameters' => ['slug' => 'it-news']],
             ['url' =>'https://www.adp.com', 'title' => 'ADP', 'icon' => 'adp'],
             ['url' =>'http://kachava.dash.app', 'title' => '401k', 'icon' => 'wallet'],
             ['url' =>'http://kachava.dash.app', 'title' => 'Dash', 'icon' => 'dash'],

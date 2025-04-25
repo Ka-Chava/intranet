@@ -18,7 +18,7 @@
             @endif
         </div>
 
-        <a href="/my/blog/{{ $post->slug }}" class="post-card__link" wire:navigate>
+        <a href="{{ $post->url }}" class="post-card__link" wire:navigate>
             <span class="sr-only">{{ $post->title }}</span>
         </a>
     </div>

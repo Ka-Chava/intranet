@@ -19,6 +19,7 @@
                     :bookmarkable="$bookmarkable"
                     :bookmarked="$bookmarked ?? false"
                     :hide-non-bookmarked="true"
+                    class="text-inherit"
                 />
             @endif
         </div>

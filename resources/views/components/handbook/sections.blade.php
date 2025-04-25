@@ -16,7 +16,7 @@
                         :class="{ 'flowing-all': animated }"
                         x-bind:style="showExpand && (!expanded ? 'height: 300px' : 'height:' + height + 'px')"
                     >
-                        <ol class="handbook-grid" x-ref="content">
+                        <ol class="cards-grid" x-ref="content">
                             @foreach($section->articles as $article)
                                 <li>
                                     <x-handbook.card

@@ -18,64 +18,37 @@ class DashboardController extends Controller
             'articles' => [
                 (object) [
                     'title' => 'Hanbook & Policies',
-                    'slug' => '/'
+                    'url' => '/my'
                 ],
                 (object) [
                     'title' => 'Helpdesk',
-                    'slug' => '/'
+                    'url' => '/my'
                 ],
                 (object) [
                     'title' => 'ADP',
-                    'slug' => '/'
+                    'url' => '/my'
                 ],
                 (object) [
                     'title' => '401K',
-                    'slug' => '/'
+                    'url' => '/my'
                 ],
                 (object) [
                     'title' => '401K',
-                    'slug' => '/'
-                ]
-            ]
-        ];
-
-        $itNews = (object) [
-            'title' => 'I.T. News',
-            'articles' => [
-                (object) [
-                    'title' => 'Lorem ipsum dolor sit amet consect',
-                    'slug' => '/'
-                ],
-                (object) [
-                    'title' => 'Lorem ipsum dolor sit amet consect',
-                    'slug' => '/'
-                ],
-                (object) [
-                    'title' => 'Lorem ipsum dolor sit amet consect',
-                    'slug' => '/'
-                ],
-                (object) [
-                    'title' => 'Lorem ipsum dolor sit amet consect',
-                    'slug' => '/'
-                ],
-                (object) [
-                    'title' => 'Lorem ipsum dolor sit amet consect',
-                    'slug' => '/'
+                    'url' => '/my'
                 ]
             ]
         ];
 
         $news = \App\Models\Blog::query()
-            ->where('slug', '=', 'company-news')
+            ->withAnyTags(['dashboard'])
             ->with(['articles' => function ($query) {
                 $query->orderByDesc('published_at')->limit(10);
             }])
-            ->firstOrFail();
+            ->get();
 
         $resources = [
             $resources,
-            $news,
-            $itNews
+            ...$news,
         ];
 
         return view('dashboard', [

@@ -10,15 +10,12 @@
     <ul class="navigation__list">
         @foreach ($links as $link)
             @php
-                $is_active = Route::current()->getName() === $link['url'];
-                $is_external = false;
-                if (str_starts_with($link['url'], 'http')) {
-                    $url = $link['url'];
-                    $is_external = true;
-                }
-                else {
-                    $url = route($link['url']);
-                }
+                $is_external = str_starts_with($link['url'], 'http');
+                $url = $is_external || str_starts_with($link['url'], '/')
+                    ? $link['url']
+                    : route($link['url'], $link['parameters'] ?? []);
+
+                $is_active = is_active_route($link['url'], $link['parameters'] ?? []);
             @endphp
             <li {{ $is_active ? "class=active" : null }}>
                 <a

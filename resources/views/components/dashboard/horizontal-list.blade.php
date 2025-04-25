@@ -29,7 +29,7 @@
         @mousedown="startDrag($event)"
     >
         @foreach($items as $item)
-            <x-dashboard.post-card :post="$item" :key="$loop->index" class="horizontal-list__item" />
+            <x-global.post-card :post="$item" :key="$loop->index" class="horizontal-list__item" />
         @endforeach
     </div>
 </div>
