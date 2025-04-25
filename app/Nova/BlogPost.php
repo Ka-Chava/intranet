@@ -103,7 +103,8 @@ class BlogPost extends Resource
                 ->disk('public')
                 ->hideFromIndex()
                 ->nullable()
-                ->prunable(),
+                ->prunable()
+                ->resolveUsing(fn ($value, $model) => $model->getRawOriginal('image')),
 
             Tags::make('Tags'),
 
