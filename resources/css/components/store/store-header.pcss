@@ -1,5 +1,23 @@
 .store-header {
-    .store-header__next b > span:nth-child(1) {
-        @apply  inline-flex rounded-full w-2 h-2 bg-black mr-1;
+    @apply flex flex-col;
+
+    .store-header__row {
+        @apply inline-flex items-center gap-1 text-sm text-on-surface-default;
+
+        b {
+            @apply inline-flex items-center text-on-surface-emphasis;
+        }
+    }
+
+    .store-header__indicator {
+        @apply inline-flex rounded-full w-2 h-2 bg-black mr-1 bg-success;
+
+        &.inactive {
+            @apply bg-neutral;
+        }
+    }
+
+    .store-header__details {
+        @apply text-on-surface-de-emphasis;
     }
 }

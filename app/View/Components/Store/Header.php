@@ -7,6 +7,16 @@ use Illuminate\View\View;
 
 class Header extends Component
 {
+
+    public $order;
+    public $available;
+
+    public function __construct($available, $order = null)
+    {
+        $this->order = $order;
+        $this->available = $available;
+    }
+
     /**
      * Get the view / contents that represents the component.
      */

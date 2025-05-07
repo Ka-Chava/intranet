@@ -1,0 +1,23 @@
+.checkbox {
+    @apply appearance-none relative border-2 border-on-surface-default w-6 h-6 bg-none bg-transparent text-transparent rounded-lg cursor-pointer align-middle flowing-all focusable focus:bg-transparent;
+
+    &::after {
+        @apply content-[''] z-[1] absolute border-r-2 border-b-2 border-on-surface-default opacity-0 rotate-45 flowing-all ;
+        left: 9px;
+        top: -4px;
+        width: 8px;
+        height: 18px;
+    }
+
+    &:checked {
+        @apply bg-none bg-transparent border-on-surface-default hover:border-on-surface-default focus:border-on-surface-default;
+    }
+
+    &:checked::after {
+        @apply opacity-100;
+    }
+
+    &:checked::before {
+        @apply content-[''] absolute top-[-2px] right-[-3px] z-[1] h-2.5 w-2.5 rounded-sm bg-canvas;
+    }
+}

@@ -26,7 +26,9 @@
 @import url('tailwindcss/utilities.css');
 
 html {
+    @apply scroll-smooth;
     scrollbar-gutter: stable;
+    scroll-padding-top: 75px;
 }
 
 html, body {

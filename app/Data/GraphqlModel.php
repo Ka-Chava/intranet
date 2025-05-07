@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Data;
 
 abstract class GraphqlModel
 {
@@ -49,7 +49,7 @@ abstract class GraphqlModel
             return $this->$method();
         }
         else {
-            throw new \Exception( 'Can\'t get property ' . $name );
+            throw new \Exception("Can't get property '$method' — no method or raw key found.");
         }
     }
     public function __isset( $name )
