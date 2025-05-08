@@ -1,9 +1,4 @@
-<form
-    class="product-form form"
-    name="store"
-    method="post"
-    wire:submit="submit"
->
+<form class="product-form form" method="post" wire:submit.prevent="submit">
     <div class="product-form__heading">
         <div class="heading">
             <h2 class="heading__title">Shakes</h2>
@@ -27,7 +22,7 @@
         >
             @foreach($products as $product)
                 <li x-data="{value: @entangle("items.$loop->index.quantity")}">
-                    <div class="product-card" data-inventory="{{ $product->inventory }}">
+                    <div class="product-card">
                         <div class="product-card__header">
                             <h2>{{ $product->title }}</h2>
                         </div>

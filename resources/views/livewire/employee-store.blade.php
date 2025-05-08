@@ -1,10 +1,20 @@
-<div>
+<div
+    id="EmployeeStore"
+    class="employee-store"
+    x-data="{ count: $wire.entangle('cart.totalQuantity') }"
+    @products:updated.window="$event.detail.count && document.getElementById('OrderShipping').scrollIntoView();"
+    @order:processed.window="$dispatch('open-modal', { modal: 'order-success' });"
+>
+    <button wire:click="clearCart">
+        asdas
+    </button>
+
     <x-global.page-header>
         <x-slot:html>
             <div class="flex justify-between">
                 <x-store.header :available="$available" :order="$recent_order" />
 
-                <div class="cart" x-data="{ count: $wire.entangle('cart.totalQuantity') }">
+                <div class="cart">
                     <x-icon-cart class="w-6 h-6" />
 
                     <span class="cart__indicator" x-show="count > 0" x-text="count"></span>
@@ -13,7 +23,7 @@
         </x-slot:html>
     </x-global.page-header>
 
-    <div class="employee-store" id="EmployeeStore">
+    <div class="employee-store__content">
         <div id="OrderProducts">
             <livewire:products-form :products="$products" />
         </div>
@@ -64,9 +74,11 @@
                                             {{ $order_address->firstName }} {{ $order_address->lastName }}
                                         </li>
 
-                                        <li class="store-confirmation__item">
-                                            {{ $order_address->address1 }}
-                                        </li>
+                                        @if($order_address->address1)
+                                            <li class="store-confirmation__item">
+                                                {{ $order_address->address1 }}
+                                            </li>
+                                        @endif
 
                                         @if($order_address->address2)
                                             <li class="store-confirmation__item">
@@ -88,7 +100,12 @@
                     </div>
                 </div>
 
-                <div x-data="{ confirmChecked: @entangle("confirmChecked"), personalUseChecked: @entangle("personalUseChecked"), address: @entangle("cart.address"), cartItems: @entangle("cart.items"), available: Boolean('{{$available}}') }">
+                <div x-data="{
+                    cart: @entangle("cart"),
+                    confirmChecked: @entangle("confirmChecked"),
+                    personalUseChecked: @entangle("personalUseChecked"),
+                    available: @entangle("available")
+                }">
                     <form class="form store-confirmation__form" wire:submit.prevent="process">
                         <div class="store-confirmation__grid">
                             <div>
@@ -119,7 +136,7 @@
                         <button
                             id="ProcessOrder"
                             class="button button--primary button--full store-confirmation__submit"
-                            :disabled="!(confirmChecked && personalUseChecked) || !address || !cartItems?.length || !available"
+                            :disabled="!(confirmChecked && personalUseChecked) || !cart.address || !cart.totalQuantity || !available"
                             wire:loading.attr="disabled"
                         >
                             <span wire:loading.remove wire:target="process">Submit order</span>
@@ -137,4 +154,18 @@
             </div>
         </div>
     </div>
+
+    <x-modal id="order-success">
+        <div class="heading">
+            <h3 class="heading__title">Success</h3>
+        </div>
+
+        <p class="my-1">
+            Your order has been successfully completed
+        </p>
+
+        <button class="button button--secondary employee-store__modal-button" @click="$dispatch('close-modal', { modal: 'order-success' });">
+            Close
+        </button>
+    </x-modal>
 </div>

@@ -7,8 +7,7 @@ use Livewire\Component;
 
 class AddressForm extends Component
 {
-    public $customerId;
-    public $submitted = false;
+    public $customer;
     public $states = [
         ['value' => 'AL', 'label' => 'Alabama'],
         ['value' => 'AK', 'label' => 'Alaska'],
@@ -80,18 +79,23 @@ class AddressForm extends Component
     public $countryCode = 'US';
     public $setAsDefault = false;
 
+    public function render()
+    {
+        return view('livewire.address-form');
+    }
+
     public function submit()
     {
-        $repository = app('shopify.repository');
-
         $this->validate();
 
-        if (!$this->customerId) {
+        if (!$this->customer) {
             $this->addError('general', 'Shopify customer not found');
             return;
         }
 
         try {
+            $repository = app('shopify.repository');
+
             $addressData = [
                 'firstName' => $this->firstName,
                 'lastName' => $this->lastName,
@@ -104,23 +108,33 @@ class AddressForm extends Component
                 'phone' => null,
             ];
 
-            $address = $repository->createAddress($addressData, $this->customerId, $this->setAsDefault);
+            $address = $repository->createAddress($addressData, $this->customer->id, $this->setAsDefault);
             $this->dispatch('cart:address', $address->id);
             $this->dispatch('cart:refresh');
-            $this->reset();
             $this->dispatch('address-saved');
+            $this->reset([
+                'firstName',
+                'lastName',
+                'address1',
+                'address2',
+                'city',
+                'provinceCode',
+                'zip',
+                'countryCode',
+                'setAsDefault',
+            ]);
         } catch (\Exception $e) {
             $this->addError('general', $e->getMessage());
         }
     }
 
-    public function changeProvince($province)
+    public function updateProvinceCode($value)
     {
-        $this->provinceCode = $province;
+        $this->provinceCode = $value;
     }
 
-    public function render()
+    public function updateCountryCode($value)
     {
-        return view('livewire.address-form');
+        $this->countryCode = $value;
     }
 }

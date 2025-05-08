@@ -118,14 +118,15 @@
                         @endif
                     </span>
 
-                    <x-select
+                    <livewire:select
                         :options="$states"
-                        name="provinceCode"
+                        :selected="$provinceCode"
+                        :placeholder="'Select state'"
                         id="state"
+                        name="provinceCode"
                         class="form__control"
                         appearance="outline"
-                        placeholder="Select state"
-                        @change="$wire.changeProvince($event.detail)"
+                        wire:model.live="provinceCode"
                     />
                 </label>
             </div>
@@ -158,7 +159,7 @@
                     @endif
                 </span>
 
-                <x-select
+                <livewire:select
                     :options="[['value' => 'US', 'label' => 'United States']]"
                     :selected="$countryCode"
                     name="countryCode"

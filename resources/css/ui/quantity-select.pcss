@@ -18,6 +18,10 @@
     }
 
     .quantity-select__button {
-        @apply p-0;
+        @apply p-0 text-inherit;
+
+        &[disabled] {
+            @apply text-on-surface-de-emphasis;
+        }
     }
 }

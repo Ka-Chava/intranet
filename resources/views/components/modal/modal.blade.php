@@ -38,30 +38,28 @@
             role="document"
             class="modal__dialog"
         >
-            <template x-if="visible">
-                <div class="modal__container">
-                    <div class="heading modal__header">
-                        @if($title)
-                            <h3 class="heading__title">
-                                {{ $title }}
-                            </h3>
-                        @endif
+            <div x-show="visible" class="modal__container">
+                <div class="heading modal__header">
+                    @if($title)
+                        <h3 class="heading__title">
+                            {{ $title }}
+                        </h3>
+                    @endif
 
-                        <button
-                            x-on:click="open = false"
-                            type="button"
-                            @class(['sr-only' => !$showCloseButton])
-                        >
-                            <span class="sr-only">Close modal</span>
-                            <x-heroicon-o-x-mark />
-                        </button>
-                    </div>
-
-                    <div class="modal__body">
-                        {{ $slot }}
-                    </div>
+                    <button
+                        x-on:click="open = false"
+                        type="button"
+                        @class(['sr-only' => !$showCloseButton])
+                    >
+                        <span class="sr-only">Close modal</span>
+                        <x-heroicon-o-x-mark />
+                    </button>
                 </div>
-            </template>
+
+                <div class="modal__body">
+                    {{ $slot }}
+                </div>
+            </div>
         </div>
     </div>
 </div>

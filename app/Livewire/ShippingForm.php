@@ -3,6 +3,8 @@
 namespace App\Livewire;
 
 use App\Facades\Cart as CartFacade;
+use Livewire\Attributes\Modelable;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Reactive;
 use Livewire\Component;
 
@@ -10,13 +12,18 @@ class ShippingForm extends Component
 {
     #[Reactive]
     public $addresses = [];
-    #[Reactive]
     public $customer;
-    public $address = null;
+    #[Modelable]
+    public $address;
 
     public function mount()
     {
         $this->address = CartFacade::getAddress();
+    }
+
+    public function render()
+    {
+        return view('livewire.shipping-form');
     }
 
     public function updatedAddress($value)
@@ -25,8 +32,9 @@ class ShippingForm extends Component
         $this->address = $value;
     }
 
-    public function render()
+    #[On('cart:updated')]
+    public function handleAddressChange()
     {
-        return view('livewire.shipping-form');
+        $this->address = CartFacade::getAddress();
     }
 }

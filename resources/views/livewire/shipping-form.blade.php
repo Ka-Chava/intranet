@@ -31,6 +31,7 @@
                     <livewire:select
                         :options="$options"
                         :selected="$address"
+                        :placeholder="'Select an address'"
                         id="address"
                         name="address"
                         class="form__control"
@@ -57,5 +58,5 @@
         </div>
     </div>
 
-    <livewire:address-form :customerId="$customer->id" />
+    <livewire:address-form :customer="$customer" />
 </div>

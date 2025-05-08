@@ -10,7 +10,7 @@ class Cart implements Wireable
     public array $items;
     public ?string $address;
 
-    public function __construct(array $items = [], ?string $address = null)
+    public function __construct(array $items = [], ?string $address = '')
     {
         $this->items = $items;
         $this->address = $address;
@@ -29,7 +29,7 @@ class Cart implements Wireable
     public static function fromLivewire($value)
     {
         $items = array_map(fn($item) => CartItem::fromLivewire($item), $value['items']);
-        $address = $value['address'] ?? null;
+        $address = $value['address'] ?? '';
 
         return new self($items, $address);
     }

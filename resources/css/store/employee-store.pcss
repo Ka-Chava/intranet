@@ -7,9 +7,15 @@
 @import "../components/store/address-form.pcss";
 
 .employee-store {
-    @apply w-full flex flex-col gap-[180px];
+    .employee-store__content {
+        @apply w-full flex flex-col gap-[180px];
+    }
 
     .employee-store__label {
         @apply block;
+    }
+
+    .employee-store__modal-button {
+        @apply flex ml-auto mt-10;
     }
 }

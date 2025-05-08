@@ -12,6 +12,9 @@ class EmployeeStore extends Component
 {
     public $cart;
     public $customer;
+    public $recent_order;
+    public $products;
+    public $available;
     public $confirmChecked = false;
     public $personalUseChecked = false;
     protected ShopifyRepository $repository;
@@ -19,16 +22,41 @@ class EmployeeStore extends Component
     public function boot()
     {
         $this->repository = app('shopify.repository');
-        $this->refreshCustomer();
     }
 
     public function mount()
     {
+        $this->refreshCustomer();
         $this->cart = CartFacade::get();
+
+        $recent_orders = $this->repository->getLastOrders($this->customer);
+        $this->recent_order = $recent_orders->first();
+
+        $this->available = !$this->recent_order || $this->customer->canOrderThisMonth();
+
+        $seconds = now()->addHours(24);
+        $this->products = cache()->remember('products', $seconds, function () {
+            return $this->repository->getProducts();
+        });
+    }
+
+    public function render()
+    {
+        $addressId = CartFacade::getAddress();
+
+        return view('livewire.employee-store', [
+            'addresses' => $this->customer->addresses,
+            'order_address' => collect($this->customer->addresses)->firstWhere('id', $addressId),
+        ]);
     }
 
     public function process()
     {
+        if (!$this->available) {
+            $this->addError('general', 'The order is not available. Please try again later.');
+            return;
+        }
+
         $address = collect($this->customer->addresses)->firstWhere('id', $this->cart->address);
         $items = collect($this->cart->items)->map(function ($item) {
             return [
@@ -38,7 +66,7 @@ class EmployeeStore extends Component
             ];
         });
 
-        $this->repository->processOrder([
+        $this->recent_order = $this->repository->processOrder([
             'email' => $this->customer->email,
             'items' => $items,
             'address' => $address,
@@ -49,6 +77,7 @@ class EmployeeStore extends Component
 
         $this->confirmChecked = false;
         $this->personalUseChecked = false;
+        $this->available = false;
 
         $this->refresh();
     }
@@ -92,30 +121,8 @@ class EmployeeStore extends Component
     #[On('cart:address')]
     public function setCartAddress($data)
     {
-        CartFacade::setAddress($data);
+        $this->cart = CartFacade::setAddress($data);
         $this->dispatchUpdated();
-    }
-
-    public function render()
-    {
-        $seconds = now()->addHours(24);
-        $cached_products = cache()->remember('products', $seconds, function () {
-            return $this->repository->getProducts();
-        });
-
-        $recent_orders = $this->repository->getLastOrders($this->customer);
-        $order = $recent_orders->first();
-
-        $addressId = CartFacade::getAddress();
-
-        return view('livewire.employee-store', [
-            'cart' => $this->cart,
-            'available' => !$order || $this->customer->canOrderThisMonth(),
-            'products' => $cached_products,
-            'addresses' => $this->customer->addresses,
-            'recent_order' => $order,
-            'order_address' => collect($this->customer->addresses)->firstWhere('id', $addressId),
-        ]);
     }
 
     private function refreshCustomer()

@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Data\Cart;
 use App\Facades\Cart as CartFacade;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
@@ -15,10 +16,14 @@ class ProductsForm extends Component
     public $products = [];
     public $limit = 0;
 
-    #[On('order:processed')]
-    public function handleOrderProcessed()
+    public function mount()
     {
         $this->setInitialStateForItems();
+    }
+
+    public function render()
+    {
+        return view('livewire.products-form');
     }
 
     public function submit()
@@ -44,18 +49,15 @@ class ProductsForm extends Component
             return;
         }
 
-        $this->dispatch('cart:update', $this->items);
-        //$this->dispatch('cart:clear');
+        $cart = CartFacade::change($this->items);
+        $this->dispatch('cart:refresh');
+        $this->dispatch('products:updated', count: $cart->totalQuantity);
     }
 
-    public function mount()
+    #[On('order:processed')]
+    public function handleOrderProcessed()
     {
         $this->setInitialStateForItems();
-    }
-
-    public function render()
-    {
-        return view('livewire.products-form');
     }
 
     private function setInitialStateForItems()

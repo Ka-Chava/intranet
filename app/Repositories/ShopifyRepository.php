@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 use App\Data\Address;
 use App\Data\Employee;
+use App\Data\Order;
 use App\Data\Product;
 use DateTime;
 use Illuminate\Support\Collection;
@@ -277,6 +278,10 @@ class ShopifyRepository {
                 id
                 order {
                   id
+                  createdAt
+                  closed
+                  closedAt
+                  tags
                 }
               }
             }
@@ -285,7 +290,9 @@ class ShopifyRepository {
 
         $draftOrderCreateResponse = $this->adminClient->query(data: ['query' => $processOrderMutation, 'variables' => ['id' => $draftOrderId]]);
         $draftOrderData = $draftOrderCreateResponse->getDecodedBody();
-        return $this->handleMutation('draftOrderComplete', $draftOrderData['data']);
+        $result = $this->handleMutation('draftOrderComplete', $draftOrderData['data']);
+
+        return new Order($result['draftOrder']['order']);
     }
 
     /**
