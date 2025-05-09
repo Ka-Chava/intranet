@@ -5,10 +5,6 @@
     @products:updated.window="$event.detail.count && document.getElementById('OrderShipping').scrollIntoView();"
     @order:processed.window="$dispatch('open-modal', { modal: 'order-success' });"
 >
-    <button wire:click="clearCart">
-        asdas
-    </button>
-
     <x-global.page-header>
         <x-slot:html>
             <div class="flex justify-between">
