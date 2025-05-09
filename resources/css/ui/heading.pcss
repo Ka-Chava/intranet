@@ -6,6 +6,14 @@
     }
 
     .heading__subtitle {
-        @apply headline-xs font-normal;
+        @apply headline-xs;
+
+        &.heading__subtitle--normal {
+            @apply font-normal;
+        }
+
+        &.heading__subtitle--secondary {
+            @apply text-on-surface-default;
+        }
     }
 }

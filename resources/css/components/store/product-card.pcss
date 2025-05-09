@@ -1,10 +1,24 @@
 .product-card {
-
-    @apply px-2 py-3 rounded;
+    @apply p-3 rounded-lg;
+    //background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.10) 50%, rgba(0, 0, 0, 0.00) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.10) 50%, rgba(255, 255, 255, 0.00) 100%);
 
     .product-card__header {
         h2 {
-            @apply font-bold text-sm leading-[20px];
+            @apply font-bold text-sm;
         }
+    }
+
+    .product-card__image-wrapper {
+        @apply relative w-full aspect-[14/15];
+    }
+
+    .product-card__image {
+        @apply absolute inset-0 w-full h-full object-contain;
+    }
+
+    .product-card__header,
+    .product-card__image {
+        @apply select-none pointer-events-none;
     }
 }

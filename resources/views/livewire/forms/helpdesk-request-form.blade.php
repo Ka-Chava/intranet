@@ -77,7 +77,6 @@
                     <x-rich-text-editor
                         wire:model="description"
                         placeholder="Please describe your problem or question in detail..."
-                        {{--wire:poll.10000ms="autosave"--}}
                     />
                 </span>
 

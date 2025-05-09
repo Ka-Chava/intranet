@@ -1,0 +1,27 @@
+.quantity-select {
+    @apply flex gap-2 rounded px-6 py-3 shadow-card;
+    background: rgba(255, 255, 255, 0.10);
+
+
+    .quantity-select__input {
+        @apply appearance-none w-full bg-transparent border-0 p-0 m-0 text-center focusable;
+        -moz-appearance: textfield;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+        &.inactive {
+            @apply text-on-surface-de-emphasis;
+        }
+    }
+
+    .quantity-select__button {
+        @apply p-0 text-inherit;
+
+        &[disabled] {
+            @apply text-on-surface-de-emphasis;
+        }
+    }
+}

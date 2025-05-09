@@ -4,7 +4,7 @@
             Bookmarks
         </h2>
 
-        <p class="heading__subtitle">
+        <p class="heading__subtitle heading__subtitle--normal">
             Your saved reading
         </p>
     </div>

@@ -1,21 +1,21 @@
-@import "../components/store/product-card.pcss";
 @import "../components/store/store-header.pcss";
+@import "../components/store/product-form.pcss";
+@import "../components/store/product-card.pcss";
+@import "../components/store/store-shipping.pcss";
+@import "../components/store/store-confirmation.pcss";
+@import "../components/store/cart.pcss";
+@import "../components/store/address-form.pcss";
 
-#EmployeeStore {
-    @apply w-full;
-    .employee-store__products {
-        @apply w-full relative;
-        .employee-store__products-list {
-            @apply flex flex-wrap gap-y-4;
-            > li {
-                @apply  w-1/4;
-                flex: 0 0 auto;
-            }
-        }
+.employee-store {
+    .employee-store__content {
+        @apply w-full flex flex-col gap-[180px];
     }
 
-    #AddToCart {
-        @apply h-[44px];
-        @apply w-full relative bg-black text-white rounded text-base leading-[24px];
+    .employee-store__label {
+        @apply block;
+    }
+
+    .employee-store__modal-button {
+        @apply flex ml-auto mt-10;
     }
 }

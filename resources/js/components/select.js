@@ -7,6 +7,10 @@ export default class Select {
     }
 
     init() {
+        this.$watch('selected', newSelected => {
+            this.selectedOption = this.options.find(option => String(option.value) === String(newSelected));
+        });
+
         this.selectedOption = this.options.find(option => String(option.value) === String(this.selected));
     };
 

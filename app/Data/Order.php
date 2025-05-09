@@ -1,10 +1,26 @@
 <?php
 
-namespace App\Models;
+namespace App\Data;
 use Carbon\Carbon;
+use Livewire\Wireable;
 
-class Order extends GraphqlModel
+class Order extends GraphqlModel implements Wireable
 {
+
+    public function __construct(array $raw = [])
+    {
+        parent::__construct($raw);
+    }
+
+    public function toLivewire()
+    {
+        return $this->raw;
+    }
+
+    public static function fromLivewire($value)
+    {
+        return new self($value);
+    }
 
     public function getCreatedAt() {
         return Carbon::make($this->raw['createdAt']);
@@ -15,13 +31,11 @@ class Order extends GraphqlModel
     }
 
     public function getRemainingDaysToOrder() {
-        $start = $this->getCreatedAt();
-        $next = $this->getNextOrder();
         return Carbon::now()->addMonth(1)->startOfMonth()->diffForHumans();
     }
 
     public function getClosedAt() {
-        return Carbon::make($this->raw['closedAt']);
+        return Carbon::make($this->raw['closedAt'] ?? $this->raw['createdAt']);
     }
 
     public function getNextOrder() {

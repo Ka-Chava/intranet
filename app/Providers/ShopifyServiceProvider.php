@@ -22,7 +22,7 @@ class ShopifyServiceProvider extends ServiceProvider
             scopes: getenv('SHOPIFY_SCOPES'),
             hostName: getenv('SHOPIFY_DOMAIN'),
             sessionStorage: new \Shopify\Auth\FileSessionStorage('/tmp/php_sessions'),
-            apiVersion: '2025-01',
+            apiVersion: '2025-04',
             isEmbeddedApp: false,
             isPrivateApp: false,
         );
